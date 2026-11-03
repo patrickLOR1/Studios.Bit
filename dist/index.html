@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Studios.Bit — creatividad, estrategia y tecnología para marcas que quieren avanzar.">
+  <meta name="theme-color" content="#0B0B0D">
+  <link rel="canonical" href="https://studios-bit-agency.polearyrosas.chatgpt.site/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:title" content="Studios.Bit — Ideas que conectan">
+  <meta property="og:description" content="Landing pages, sitios corporativos y gestión de redes sociales para marcas que quieren avanzar.">
+  <meta property="og:url" content="https://studios-bit-agency.polearyrosas.chatgpt.site/">
+  <meta property="og:image" content="https://studios-bit-agency.polearyrosas.chatgpt.site/assets/studios-bit-social.png">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Studios.Bit — Ideas que conectan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,21 +21,23 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="cursor-glow" aria-hidden="true"></div>
   <header class="nav">
     <a class="brand" href="#inicio" aria-label="Studios Bit, inicio"><img src="assets/studios-bit-horizontal.svg" alt="Studios.Bit — Agencia Digital"></a>
-    <nav aria-label="Navegación principal">
+    <nav id="main-nav" aria-label="Navegación principal">
       <a href="#servicios">Servicios</a><a href="#nosotros">Estudio</a><a href="#proceso">Proceso</a>
     </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span class="sr-only">Abrir menú</span></button>
     <a class="nav-cta" href="#contacto">Hablemos <span>↗</span></a>
   </header>
 
-  <main>
+  <main id="contenido">
     <section class="hero" id="inicio">
       <div class="hero-kicker"><span class="pulse"></span> CREATIVE · DIGITAL · TECHNOLOGY</div>
       <h1>Ideas que<br><span>conectan.</span><br>Soluciones que<br>transforman.</h1>
       <div class="hero-bottom">
-        <p>Creatividad, estrategia y tecnología en un solo lugar. Diseñamos ecosistemas digitales que ayudan a las marcas a avanzar.</p>
+        <div><p>Creatividad, estrategia y tecnología en un solo lugar. Diseñamos experiencias digitales que ayudan a las marcas a avanzar.</p><a class="hero-cta" href="#contacto">INICIAR UN PROYECTO <span>↗</span></a></div>
         <a class="circle-link" href="#servicios" aria-label="Explorar servicios"><span>↓</span></a>
       </div>
       <div class="orb" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -36,20 +47,19 @@
     <section class="manifesto" id="nosotros">
       <div class="section-label mono"><span>01</span> ¿QUIÉNES SOMOS?</div>
       <div class="manifesto-copy">
-        <p>Somos una agencia creativa y de soluciones digitales especializada en <em>desarrollo web, marketing, social media, branding y automatización.</em></p>
+        <p>Somos una agencia creativa especializada en <em>landing pages, sitios corporativos y gestión estratégica de redes sociales.</em></p>
         <div class="manifesto-note"><span>↳</span><p>No solo creamos presencia digital. Construimos herramientas para hacer crecer las ideas.</p></div>
       </div>
     </section>
 
     <section class="services" id="servicios">
-      <div class="section-head"><div class="section-label mono"><span>02</span> CAPACIDADES</div><p>CINCO DISCIPLINAS.<br>UNA MISMA VISIÓN.</p></div>
+      <div class="section-head"><div class="section-label mono"><span>02</span> SERVICIOS</div><p>TRES SOLUCIONES.<br>UNA MISMA VISIÓN.</p></div>
       <div class="service-list">
-        <article class="service active" tabindex="0"><div class="service-num mono">01</div><h2>Digital<br>Solutions</h2><p>Sitios web, e-commerce, plataformas, dashboards y soluciones digitales a la medida.</p><div class="service-icon">↗</div><div class="service-visual visual-one"><span>&lt;/&gt;</span></div></article>
-        <article class="service" tabindex="0"><div class="service-num mono">02</div><h2>Digital<br>Marketing</h2><p>Estrategias, campañas, SEO, embudos y decisiones enfocadas en resultados.</p><div class="service-icon">↗</div><div class="service-visual visual-two"><span>↑</span></div></article>
-        <article class="service" tabindex="0"><div class="service-num mono">03</div><h2>Social<br>Media</h2><p>Contenido con intención, diseño visual y una voz coherente para tu comunidad.</p><div class="service-icon">↗</div><div class="service-visual visual-three"><span>◎</span></div></article>
-        <article class="service" tabindex="0"><div class="service-num mono">04</div><h2>Branding &<br>Creative</h2><p>Identidades visuales memorables, versátiles y construidas para diferenciar.</p><div class="service-icon">↗</div><div class="service-visual visual-four"><span>✦</span></div></article>
-        <article class="service" tabindex="0"><div class="service-num mono">05</div><h2>Automation<br>& AI</h2><p>Flujos, asistentes e integraciones que hacen más eficiente el trabajo real.</p><div class="service-icon">↗</div><div class="service-visual visual-five"><span>⟲</span></div></article>
+        <article class="service active" tabindex="0"><div class="service-num mono">01</div><h2>Landing<br>Pages</h2><div><p>Páginas rápidas y enfocadas en presentar tu oferta, captar prospectos y facilitar conversiones.</p><button class="service-select" type="button" data-service="Landing Page">CONSULTAR <span>↗</span></button></div><div class="service-visual visual-one"><span>&lt;/&gt;</span></div></article>
+        <article class="service" tabindex="0"><div class="service-num mono">02</div><h2>Sitios<br>Corporativos</h2><div><p>Presencia web profesional, adaptable y construida para comunicar la esencia de tu negocio.</p><button class="service-select" type="button" data-service="Sitio Corporativo">CONSULTAR <span>↗</span></button></div><div class="service-visual visual-two"><span>↗</span></div></article>
+        <article class="service" tabindex="0"><div class="service-num mono">03</div><h2>Gestión de<br>Redes Sociales</h2><div><p>Estrategia, contenido y diseño visual para construir una presencia relevante y consistente.</p><button class="service-select" type="button" data-service="Gestión de Redes Sociales">CONSULTAR <span>↗</span></button></div><div class="service-visual visual-three"><span>◎</span></div></article>
       </div>
+      <p class="services-note mono">¿TIENES OTRO TIPO DE PROYECTO? LO EVALUAMOS CONTIGO CASO POR CASO.</p>
     </section>
 
     <section class="why">
@@ -82,16 +92,18 @@
 
     <section class="contact" id="contacto">
       <div class="contact-copy"><div class="section-label mono"><span>06</span> CONTACTO</div><h2>Let’s build<br>something<br><em>great.</em></h2><p>Cuéntanos qué necesitas y construyamos una solución a tu medida.</p><a href="https://instagram.com/studios.bit" target="_blank" rel="noreferrer">@studios.bit ↗</a></div>
-      <form id="project-form">
-        <label>Nombre<input name="name" autocomplete="name" placeholder="Tu nombre" required></label>
-        <label>Email<input name="email" type="email" autocomplete="email" placeholder="tu@email.com" required></label>
-        <label>¿Qué necesitas?<select name="service" required><option value="" selected disabled>Selecciona un servicio</option><option>Digital Solutions</option><option>Digital Marketing</option><option>Social Media</option><option>Branding & Creative</option><option>Automation & AI</option><option>Otra solución</option></select></label>
-        <label>Cuéntanos sobre tu proyecto<textarea name="details" placeholder="Objetivos, retos, tiempos..." required></textarea></label>
-        <button type="submit">INICIAR UN PROYECTO <span>↗</span></button><p class="form-note mono" aria-live="polite">RESPONDEMOS LO ANTES POSIBLE</p>
+      <form id="project-form" novalidate>
+        <label for="name">Nombre</label><input id="name" name="name" autocomplete="name" placeholder="Tu nombre" required>
+        <label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required>
+        <label for="service">¿Qué necesitas?</label><select id="service" name="service" required><option value="" selected disabled>Selecciona un servicio</option><option>Landing Page</option><option>Sitio Corporativo</option><option>Gestión de Redes Sociales</option><option>Otro proyecto</option></select>
+        <label for="details">Cuéntanos sobre tu proyecto</label><textarea id="details" name="details" placeholder="Objetivos, retos, tiempos..." required></textarea>
+        <button type="submit">PREPARAR MENSAJE <span>↗</span></button><p class="form-note mono">TUS DATOS NO SE ENVÍAN AUTOMÁTICAMENTE</p>
+        <div class="message-result" hidden aria-live="polite"><p>Tu mensaje está listo. Cópialo y envíalo por Instagram.</p><pre id="message-preview"></pre><div class="message-actions"><button id="copy-message" type="button">COPIAR MENSAJE</button><a href="https://instagram.com/studios.bit" target="_blank" rel="noreferrer">ABRIR INSTAGRAM ↗</a></div><p class="copy-status mono" aria-live="polite"></p></div>
       </form>
     </section>
   </main>
   <footer><a class="brand" href="#inicio" aria-label="Studios Bit, inicio"><img src="assets/studios-bit-horizontal.svg" alt="Studios.Bit — Agencia Digital"></a><p>Creative. Digital. Technology.</p><span class="mono">© <span id="year"></span> STUDIOS.BIT</span></footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Studios.Bit","url":"https://studios-bit-agency.polearyrosas.chatgpt.site/","sameAs":["https://www.instagram.com/studios.bit/"]}</script>
   <script src="script.js"></script>
 </body>
 </html>
