@@ -53,7 +53,15 @@ media.add({ motion: '(prefers-reduced-motion: no-preference)', desktop: '(min-wi
     line.className='intro-line';
     const phrase=document.createElement('b');
     phrase.style.cssText='display:inline-block;font-weight:inherit';
-    phrase.append(...nodes);
+    for(const node of nodes){
+      if(node.nodeType!==Node.TEXT_NODE){phrase.append(node);continue;}
+      for(const chunk of node.textContent.split(/(\s+)/)){
+        if(!chunk.trim()){phrase.append(chunk);continue;}
+        const word=document.createElement('b');
+        word.style.cssText='display:inline-block;font-weight:inherit';
+        word.textContent=chunk;phrase.append(word);
+      }
+    }
     line.append(phrase);
     return line;
   });
@@ -61,6 +69,7 @@ media.add({ motion: '(prefers-reduced-motion: no-preference)', desktop: '(min-wi
   const intro=gsap.timeline({defaults:{ease:'power3.out',clearProps:'transform,opacity'}});
   intro.from('.hero-kicker',{y:8,opacity:.8,duration:.4})
     .from(fragments.map(line=>line.firstChild),{yPercent:55,opacity:.7,stagger:.085,duration:.72},.08)
+    .from(heading.querySelectorAll('b>b'),{x:desktop?9:3,stagger:.035,duration:.46},.1)
     .from('.hero-bottom',{y:12,opacity:.85,duration:.55},.36);
   gsap.utils.toArray('.manifesto-copy>p, .manifesto-note, .section-head, .why>h2, .why-grid article, .steps article, .service, .audience>p, .contact-copy, #project-form').forEach(el => {
     gsap.from(el, { y: desktop ? 22 : 10, duration: .65, ease: 'power2.out', clearProps: 'transform', scrollTrigger: { trigger: el, start: 'top 96%', once: true } });

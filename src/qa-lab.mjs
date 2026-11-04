@@ -21,9 +21,9 @@ try{
    await page.locator('.lab-steps').waitFor();
    if(width===1440 && lang==='es'){
     await page.waitForTimeout(1400);
-    for(const section of ['.manifesto','.decision','.services','.process','#proyecto']){
+    for(const section of ['.manifesto','.decision','.services','.process','.audience','#proyecto']){
       await page.locator(section).evaluate(el=>el.scrollIntoView({behavior:'smooth'}));
-      await page.waitForTimeout(1350);
+      await page.waitForTimeout(section==='.audience'?4100:1350);
     }
    }
    await page.locator('.lab-steps [data-step="0"]').click();
