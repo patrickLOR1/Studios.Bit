@@ -37,6 +37,10 @@ media.add({ motion: '(prefers-reduced-motion: no-preference)', desktop: '(min-wi
     gsap.ticker.lagSmoothing(0);
     document.documentElement.classList.add('motion-scroll');
   }
+  if(desktop && !(navigator.hardwareConcurrency<=4)){
+    gsap.fromTo('.manifesto-note',{y:24},{y:-14,ease:'none',scrollTrigger:{trigger:'.manifesto',scrub:true}});
+    gsap.fromTo('.hero-cta',{scale:.96},{scale:1,duration:.5});
+  }
   const heading=document.querySelector('.hero h1');
   const lines=[];
   for(const node of [...heading.childNodes]){
@@ -47,13 +51,16 @@ media.add({ motion: '(prefers-reduced-motion: no-preference)', desktop: '(min-wi
   const fragments=lines.map(nodes=>{
     const line=document.createElement('span');
     line.className='intro-line';
-    line.append(...nodes);
+    const phrase=document.createElement('b');
+    phrase.style.cssText='display:inline-block;font-weight:inherit';
+    phrase.append(...nodes);
+    line.append(phrase);
     return line;
   });
   heading.replaceChildren(...fragments);
   const intro=gsap.timeline({defaults:{ease:'power3.out',clearProps:'transform,opacity'}});
   intro.from('.hero-kicker',{y:8,opacity:.8,duration:.4})
-    .from(fragments,{y:desktop?26:12,opacity:.78,stagger:.075,duration:.68},.08)
+    .from(fragments.map(line=>line.firstChild),{yPercent:55,opacity:.7,stagger:.085,duration:.72},.08)
     .from('.hero-bottom',{y:12,opacity:.85,duration:.55},.36);
   gsap.utils.toArray('.manifesto-copy>p, .manifesto-note, .section-head, .why>h2, .why-grid article, .steps article, .service, .audience>p, .contact-copy, #project-form').forEach(el => {
     gsap.from(el, { y: desktop ? 22 : 10, duration: .65, ease: 'power2.out', clearProps: 'transform', scrollTrigger: { trigger: el, start: 'top 96%', once: true } });
@@ -66,7 +73,7 @@ media.add({ motion: '(prefers-reduced-motion: no-preference)', desktop: '(min-wi
     document.documentElement.classList.remove('motion-scroll');
     if(fragments[0]?.parentNode===heading){
       heading.replaceChildren(...fragments.flatMap((line,index)=>[
-        ...(index?[document.createElement('br')]:[]),...line.childNodes
+        ...(index?[document.createElement('br')]:[]),...line.firstChild.childNodes
       ]));
     }
   };
@@ -74,3 +81,5 @@ media.add({ motion: '(prefers-reduced-motion: no-preference)', desktop: '(min-wi
 document.fonts.ready.then(() => ScrollTrigger.refresh());
 document.addEventListener('labresize',()=>requestAnimationFrame(()=>ScrollTrigger.refresh()));
 document.addEventListener('languagechange',()=>requestAnimationFrame(()=>ScrollTrigger.refresh()));
+import {mountPoster} from './poster.js';
+mountPoster();

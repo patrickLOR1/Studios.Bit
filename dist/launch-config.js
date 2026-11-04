@@ -1,1 +1,0 @@
-window.studiosLaunch={"leadEnabled":false,"privacyUrl":"","privacyVersion":"","origin":"https://studios-bit-agency.polearyrosas.chatgpt.site"};

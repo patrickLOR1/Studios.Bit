@@ -17,7 +17,7 @@ try{
   const errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   for(const lang of ['es','en']){
-   await page.goto('http://127.0.0.1:4295/'+lang+'/');
+   await page.goto((process.env.PREVIEW_URL || 'http://127.0.0.1:4295')+'/'+lang+'/');
    await page.locator('.lab-steps').waitFor();
    if(width===1440 && lang==='es'){
     await page.waitForTimeout(1400);

@@ -10,3 +10,26 @@
 @media(max-width:560px){.nav>.brand img{width:260px;max-width:calc(100vw - 90px)}.nav{height:100px;min-height:100px}}
 @media(max-width:360px){.nav>.brand img{width:230px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.cursor-glow{display:none}}
+
+.poster{background:#0b0b0d;color:white;border-block:1px solid #373739;padding:clamp(24px,5vw,80px) 5vw;container-type:inline-size}
+.poster-type{font:700 clamp(20px,7.4vw,150px)/1.2 Manrope,sans-serif;letter-spacing:-.055em}
+.poster-type span{display:block}
+.poster.mounted .poster-type{position:relative;overflow:hidden;height:1.3em;display:grid;align-items:center;font-size:7.6cqw}
+.poster.mounted .poster-type span{grid-area:1/1;white-space:nowrap;visibility:hidden}
+.poster.mounted .poster-type span:first-child{visibility:visible}
+.poster-controls:not([hidden]){display:flex;align-items:center;gap:14px;margin-top:1.4rem;font:12px monospace;letter-spacing:.1em}
+.poster-controls button{width:46px;height:46px;border:1px solid #666;border-radius:50%;background:none;color:white;cursor:pointer}
+.poster-controls button:hover,.poster-controls button:focus-visible{border-color:#ff6a00}
+.poster-meter{height:2px;background:#414144;flex:1}
+.poster-meter i{display:block;height:100%;background:#ff6a00;transform:scaleX(0);transform-origin:left}
+@media(prefers-reduced-motion:no-preference){
+ .lab-grid [data-panel]:not([hidden]),.final-brief{animation:studio-rise .38s cubic-bezier(.22,.72,.2,1)}
+ .lab-grid aside strong,.choice-deck [aria-pressed=true],.concept svg,.scope-art svg{animation:studio-rise .28s ease-out}
+ .service-visual{transition:transform .42s ease-out}
+ .service.active .service-visual{transform:perspective(700px) rotateY(-7deg) translateY(-3px)}
+ .hero .intro-line{clip-path:inset(-.12em -.1em -.12em -.1em)}
+ .menu-open #main-nav a{animation:studio-rise .32s ease-out}
+ @keyframes studio-rise{from{opacity:.72;translate:0 7px}to{opacity:1;translate:0 0}}
+}
+@media(max-width:600px){.poster{padding-block:36px}.poster-controls{gap:10px}}
+.service-visual svg{width:min(80%,180px);height:auto;color:#ff6a00}.hero h1 .intro-line b span{color:var(--orange)}
