@@ -19,4 +19,3 @@ a,button,select{touch-action:manipulation}.brand,.nav-cta,.menu-toggle,.service-
 @media(max-width:900px){.nav{height:86px}.nav>.brand img{width:210px}.nav>.nav-cta{display:none}.ticker>div{grid-template-columns:repeat(2,1fr)}.ticker span,.ticker span:nth-of-type(4),.ticker span:nth-of-type(5){grid-column:span 1}.ticker span:last-of-type{grid-column:1/-1}}
 @media(max-width:560px){.nav{height:78px}.nav>.brand img{width:190px}.audience{padding-top:72px;padding-bottom:76px}.audience>.section-label{margin:0 20px 42px}.ticker{padding:0 20px;font-size:30px}.ticker>div{display:flex;border:0}.ticker span,.ticker span:nth-of-type(4),.ticker span:nth-of-type(5),.ticker span:last-of-type{display:block;min-height:0;padding:20px 0;border-top:1px solid var(--line)}.audience>p{margin:48px 20px 0;font-size:16px}}
 @media(max-width:360px){.nav>.brand img{width:175px}.audience>.section-label,.audience>p{margin-left:18px;margin-right:18px}.ticker{padding-inline:18px;font-size:28px}}
-

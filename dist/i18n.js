@@ -1,5 +1,10 @@
 // Central translation catalog: selector => [Spanish, English]. Only trusted copy uses HTML.
 const copy = {
+ 'label[for=company]':['Empresa (opcional)','Company (optional)'],
+ '.decision-label':['EL PUNTO DE DECISIÓN','THE DECISION POINT'],
+ '#decision-title':['Alguien te encuentra.<br>¿Qué pasa después?','Someone finds you.<br>What happens next?'],
+ '.decision-copy':['Si cuesta entender tu oferta o encontrar cómo contactarte, una visita puede terminar ahí. Diseñamos ese siguiente paso contigo: una consulta sobre un producto, una explicación clara de tus servicios o una conversación que continúa en redes.','When your offer or contact details are hard to find, a visit can end there. We design the next step with you: a product enquiry, a clear introduction to your services or a conversation that continues on social media.'],
+ '.decision-link':['Descubre lo que tu negocio necesita ↗','Discover what your business needs ↗'],
  '.skip-link':['Saltar al contenido','Skip to content'],
  '#main-nav a':['Servicios|Estudio|Proceso|Contacto','Services|Studio|Process|Contact'],
  '.nav-cta':['Hablemos ↗',"Let’s talk ↗"],
@@ -73,9 +78,19 @@ function setLanguage(lang) {
  document.querySelector('meta[property="og:description"]').content=description;
  document.querySelector('meta[property="og:title"]').content=document.title;
  document.querySelector('meta[property="og:locale"]').content=n?'en_US':'es_MX';
- const url='https://studios-bit-agency.polearyrosas.chatgpt.site/'+lang+'/';
+ const url=document.querySelector('link[hreflang="'+lang+'"]').getAttribute('href');
  document.querySelector('link[rel=canonical]').href=url;
  document.querySelector('meta[property="og:url"]').content=url;
+ const schema=document.querySelector('script[type="application/ld+json"]');
+ const structured=JSON.parse(schema.textContent);
+ if(structured['@graph']){
+   const titles=[...document.querySelectorAll('.service h2')];
+   structured['@graph'].filter(item=>item['@type']==='Service').forEach((item,i)=>{
+     item.name=titles[i].textContent;
+     item.url=url+'#servicios';
+   });
+   schema.textContent=JSON.stringify(structured);
+ }
  try {localStorage.setItem('studios-language',lang);} catch {}
  document.dispatchEvent(new Event('languagechange'));
 }

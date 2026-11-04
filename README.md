@@ -7,10 +7,16 @@ Landing estática de Studios.Bit. La oferta visible de lanzamiento se concentra 
 Desde la raíz del proyecto:
 
 ```powershell
-python -m http.server 4288 --directory dist
+npm ci
+npm run build
+python -m http.server 4294 --bind 127.0.0.1 --directory dist
 ```
 
-Abre `http://127.0.0.1:4288`.
+Abre `http://127.0.0.1:4294/es/` o `/en/`. Edita los archivos de `src/`. El build regenera `dist/`, incluido el HTML estático de cada idioma.
+
+La configuración `SITE_URL` establece el origen de canonical, hreflang, Open Graph y sitemap. Las compilaciones de revisión generan `noindex,nofollow`. Solo una compilación definitiva con `SITE_INDEXABLE=true` permite indexar.
+
+Con la vista previa activa, ejecuta `node src/qa.mjs` para probar ambas rutas en Edge y guardar las capturas en `review/`. Puedes configurar `EDGE_PATH` y `PREVIEW_URL`.
 
 ## Contacto
 
@@ -21,4 +27,3 @@ El formulario no transmite ni almacena datos. Prepara un mensaje local que el vi
 - Confirmar dominio oficial antes de migrar canonical y metadatos sociales.
 - Definir correo o CRM, aviso de privacidad y datos legales.
 - Revisar disponibilidad y uso comercial de la marca.
-

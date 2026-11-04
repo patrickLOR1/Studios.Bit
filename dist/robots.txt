@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://studios-bit-agency.polearyrosas.chatgpt.site/sitemap.xml
+Disallow: /
