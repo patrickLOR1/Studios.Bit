@@ -12,6 +12,10 @@
 .hero-bottom{position:relative}
 .hero-index{color:#9ca3af}
 .cursor-glow{display:none}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .cursor-glow{--halo-size:clamp(300px,30vw,420px);display:block;position:fixed;top:calc(var(--halo-size) / -2);left:calc(var(--halo-size) / -2);width:var(--halo-size);height:var(--halo-size);z-index:4;pointer-events:none;opacity:0;transform:translate3d(0,0,0);background:radial-gradient(ellipse at center,rgba(255,106,0,.19),rgba(255,106,0,.085) 33%,rgba(255,106,0,.025) 54%,transparent 72%);transition:opacity .24s ease-out}
+ .cursor-glow.is-lit{opacity:1}
+}
 .decision{position:relative;overflow:clip}
 .decision h2{max-width:17ch}
 .decision:after{content:"";display:block;width:clamp(40px,9vw,130px);height:4px;background:#ff6a00;margin-top:50px}

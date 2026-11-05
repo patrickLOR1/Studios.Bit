@@ -1,3 +1,4 @@
+import './cursor-glow.js';
 import './navigation.js';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';

@@ -3,10 +3,21 @@
  const chapters=document.querySelector('.story-chapters');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let engine;
- function inset(){
-  const sticky=chapters && getComputedStyle(chapters).position==='sticky';
-  return header.offsetHeight+(sticky?chapters.offsetHeight:0)+8;
+ let navigationInset;
+ function measureBars(){
+  const height=header.offsetHeight;
+  const pinned=chapters && getComputedStyle(chapters).position==='sticky';
+  navigationInset=height+(pinned?chapters.offsetHeight:0)+8;
+  const root=document.documentElement.style;
+  root.setProperty('--header-height',height+'px');
+  root.setProperty('--navigation-inset',navigationInset+'px');
  }
+ const barSizes=new ResizeObserver(measureBars);
+ barSizes.observe(header);
+ if(chapters)barSizes.observe(chapters);
+ matchMedia('(max-width:800px)').addEventListener('change',measureBars);
+ measureBars();
+ function inset(){return navigationInset}
  function navigate(target,{focus=target,hash,nearest=false}={}){
   if(!target)return;
   const topInset=inset();
