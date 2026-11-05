@@ -42,7 +42,7 @@ try{
    assert.equal(await field('web').inputValue(),'corporate');
    assert.ok(await field('bilingual').isChecked());
    assert.equal(await field('goal').inputValue(),'community');
-   assert.equal(await page.locator('a[href="https://studiosbit.setmore.com/patrick"]').count(),5);
+   assert.equal(await page.locator('a[href="https://studiosbit.setmore.com/patrick"]').count(),6);
    await page.locator('[data-panel="1"] [data-step="2"]').click();
    await page.reload();
    await page.locator('.final-brief').waitFor();
@@ -70,3 +70,4 @@ try{
  }
 }finally{await browser.close();}
 console.log('Pricing, recommendation, bilingual state, proposal handoff and booking links passed.');
+

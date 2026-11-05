@@ -19,7 +19,7 @@ const copy = {
  '.services .section-label':['<span>02</span> SERVICIOS','<span>02</span> SERVICES'],
  '.section-head>p':['TRES SOLUCIONES.<br>UNA MISMA VISIÓN.','THREE SOLUTIONS.<br>ONE SHARED VISION.'],
  '.service h2':['Páginas de captación|Sitios web corporativos|Gestión de redes sociales','Landing Pages|Corporate Websites|Social Media Management'],
- '.service p':['Páginas rápidas y enfocadas en presentar tu oferta, captar prospectos y facilitar conversiones.|Presencia web profesional, adaptable y construida para comunicar la esencia de tu negocio.|Estrategia, contenido y diseño visual para construir una presencia relevante y consistente.','Fast, focused pages designed to showcase your offer, attract leads and support conversions.|A professional, responsive website built to communicate what makes your business unique.|Strategy, content and visual design for a relevant, consistent social presence.'],
+ '.service>div:nth-of-type(2)>p':['Páginas rápidas y enfocadas en presentar tu oferta, captar prospectos y facilitar conversiones.|Presencia web profesional, adaptable y construida para comunicar la esencia de tu negocio.|Estrategia, contenido y diseño visual para construir una presencia relevante y consistente.','Fast, focused pages designed to showcase your offer, attract leads and support conversions.|A professional, responsive website built to communicate what makes your business unique.|Strategy, content and visual design for a relevant, consistent social presence.'],
  '.service-select':['CONSULTAR <span>↗</span>','ENQUIRE <span>↗</span>'],
  '.services-note':['¿TIENES OTRO TIPO DE PROYECTO? LO EVALUAMOS CONTIGO CASO POR CASO.','HAVE A DIFFERENT PROJECT IN MIND? LET’S EXPLORE IT TOGETHER.'],
  '.why .section-label':['<span>03</span> POR QUÉ STUDIOS.BIT','<span>03</span> WHY STUDIOS.BIT'],
@@ -32,7 +32,8 @@ const copy = {
  '.steps small':['CONTEXTO|ESTRATEGIA|DISEÑO|IMPLEMENTACIÓN|EVOLUCIÓN','CONTEXT|STRATEGY|DESIGN|IMPLEMENTATION|EVOLUTION'],
  '.steps p':['Conocemos el negocio, sus retos, clientes y oportunidades.|Definimos la estrategia, el alcance y las herramientas adecuadas.|Diseñamos y construimos la solución con intención y precisión.|Probamos, ajustamos y llevamos el proyecto al mundo.|Analizamos el desempeño y encontramos nuevas oportunidades.','We get to know your business, challenges, customers and opportunities.|We define the strategy, scope and tools that fit your goals.|We design and build with purpose and precision.|We test, refine and bring your project to the world.|We analyze performance and uncover new opportunities.'],
  '.audience .section-label':['<span>05</span> CON QUIÉN TRABAJAMOS','<span>05</span> WHO WE WORK WITH'],
- '.poster-type span':['EMPRENDEDORES|PYMES|NEGOCIOS LOCALES|MARCAS|EMPRESAS','ENTREPRENEURS|SMALL BUSINESSES|LOCAL BUSINESSES|BRANDS|COMPANIES'],
+ '.band-group:first-child span':['EMPRENDEDORES|PYMES|NEGOCIOS LOCALES|MARCAS|EMPRESAS','ENTREPRENEURS|SMALL BUSINESSES|LOCAL BUSINESSES|BRANDS|COMPANIES'],
+ '.band-help':['La animación se pausa al enfocar. Pulsa Escape para detenerla.','Animation pauses on focus. Press Escape to stop it.'],
  '.audience>p':['Colaboramos con personas y equipos que quieren fortalecer su presencia digital, profesionalizar su marca o modernizar su forma de trabajar.','We work with people and teams looking to strengthen their digital presence, develop their brand or modernize the way they work.'],
  '.contact .section-label':['<span>06</span> CONTACTO','<span>06</span> CONTACT'],
  '.contact h2':['Hagamos realidad<br>tu próximo<br><em>proyecto.</em>',"Let’s build<br>something<br><em>great.</em>"],
@@ -66,8 +67,9 @@ window.translate = (es,en)=>window.siteLanguage==='en'?en:es;
 function setLanguage(lang) {
  window.siteLanguage=lang; const n=lang==='en'?1:0;
  document.documentElement.lang=lang;
+ document.querySelectorAll('[data-es][data-en]').forEach(el=>el.textContent=el.dataset[lang]);
  for(const [selector,values] of Object.entries(copy)) { const parts=values[n].split('|'); document.querySelectorAll(selector).forEach((el,i)=>el.innerHTML=parts.length===1?parts[0]:parts[i]); }
- const attrs=[['#name','placeholder','Tu nombre','Your name'],['#email','placeholder','tu@correo.com','you@example.com'],['#details','placeholder','Objetivos, retos, tiempos...','Goals, challenges, timeline...'],['#main-nav','aria-label','Navegación principal','Main navigation'],['.circle-link','aria-label','Explorar servicios','Explore services'],['.brand','aria-label','Studios.Bit, inicio','Studios.Bit, home'],['.brand img','alt','Studios.Bit — Agencia Digital','Studios.Bit — Digital Agency'],['.poster','aria-label','Emprendedores, pymes, negocios locales, marcas y empresas','Entrepreneurs, small businesses, local businesses, brands and companies']];
+ const attrs=[['#name','placeholder','Tu nombre','Your name'],['#email','placeholder','tu@correo.com','you@example.com'],['#details','placeholder','Objetivos, retos, tiempos...','Goals, challenges, timeline...'],['#main-nav','aria-label','Navegación principal','Main navigation'],['.circle-link','aria-label','Explorar servicios','Explore services'],['.brand','aria-label','Studios.Bit, inicio','Studios.Bit, home'],['.brand img','alt','Studios.Bit — Agencia Digital','Studios.Bit — Digital Agency'],['.audience-band','aria-label','Emprendedores, pymes, negocios locales, marcas y empresas','Entrepreneurs, small businesses, local businesses, brands and companies']];
  attrs.forEach(([selector,attr,es,en])=>document.querySelectorAll(selector).forEach(el=>el.setAttribute(attr,n?en:es)));
  document.querySelectorAll('[data-lang]').forEach(el=>{el.setAttribute('aria-pressed',String(el.dataset.lang===lang));el.setAttribute('aria-label',el.dataset.lang==='es'?'Español':'English');});
  document.querySelectorAll('.languages').forEach(el=>el.setAttribute('aria-label',n?'Language':'Idioma'));
@@ -99,3 +101,4 @@ let saved='es';try {if(localStorage.getItem('studios-language')==='en')saved='en
 if(location.pathname.startsWith('/en/'))saved='en';
 if(location.pathname.startsWith('/es/'))saved='es';
 setLanguage(saved);
+

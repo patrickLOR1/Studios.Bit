@@ -1,53 +1,55 @@
 import {gsap} from 'gsap';
 
-export function mountPoster(){
- const poster=document.querySelector('.poster');
- const words=[...poster.querySelectorAll('.poster-type span')];
- const controls=poster.querySelector('.poster-controls');
- const play=controls.querySelector('[data-play]');
- const next=controls.querySelector('[data-next]');
- const meter=controls.querySelector('i');
- const reduced=matchMedia('(prefers-reduced-motion: reduce)');
- let current=0, paused=reduced.matches, visible=false, clock, slide, touchX;
- controls.hidden=false;
- poster.classList.add('mounted');
- function labels(){
-  const english=document.documentElement.lang==='en';
-  play.textContent=paused?'▶':'Ⅱ';
-  play.setAttribute('aria-label',paused?(english?'Play':'Reproducir'):(english?'Pause':'Pausar'));
-  next.setAttribute('aria-label',english?'Next category':'Siguiente categoría');
-  controls.querySelector('output').textContent=String(current+1).padStart(2,'0')+' / 05';
-  words.forEach((word,i)=>word.setAttribute('aria-hidden',String(i!==current)));
+// The second group is an inaccessible visual copy. Travel equals one exact group width.
+export function mountBand(){
+ const band=document.querySelector('.audience-band');
+ const track=band.querySelector('.band-track');
+ const group=track.firstElementChild;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+ let tween, stopped=false, visible=false, hovered=false;
+ function sync(){
+  const pause=stopped || reduce.matches || !visible || document.hidden || hovered || band.contains(document.activeElement);
+  tween?.paused(pause);
  }
- function timer(){
-  clock?.kill();
-  gsap.set(meter,{scaleX:0});
-  if(!paused && visible && !document.hidden) clock=gsap.to(meter,{scaleX:1,duration:2.8,ease:'none',onComplete:()=>advance(1)});
+ function rebuild(){
+  tween?.kill();
+  track.querySelector('.band-clone')?.remove();
+  gsap.set(track,{x:0});
+  band.classList.toggle('band-ready',!reduce.matches);
+  if(reduce.matches)return;
+  const clone=group.cloneNode(true);
+  clone.classList.add('band-clone');
+  clone.setAttribute('aria-hidden','true');
+  track.append(clone);
+  const distance=group.getBoundingClientRect().width;
+  tween=gsap.to(track,{x:-distance,duration:distance/(innerWidth<600?36:50),repeat:-1,ease:'none',paused:true});
+  sync();
  }
- function advance(direction){
-  slide?.progress(1).kill();
-  const previous=words[current];
-  current=(current+direction+words.length)%words.length;
-  const word=words[current];
-  gsap.set(word,{visibility:'visible'});
-  slide=gsap.timeline({defaults:{duration:reduced.matches?0:.52,ease:'power3.inOut'}});
-  slide.to(previous,{xPercent:-direction*104,opacity:.25},0)
-       .fromTo(word,{xPercent:direction*104,opacity:.5,scale:.97},{xPercent:0,opacity:1,scale:1},0)
-       .set(previous,{visibility:'hidden'});
-  labels();timer();
- }
- function pause(){paused=true;labels();timer();}
- next.onclick=()=>{pause();advance(1)};
- play.onclick=()=>{paused=!paused;labels();timer()};
- poster.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')clock?.pause()});
- poster.addEventListener('pointerleave',()=>{if(!paused)clock?.resume()});
- poster.addEventListener('focusin',()=>clock?.pause());
- poster.addEventListener('focusout',e=>{if(!poster.contains(e.relatedTarget)&&!paused)clock?.resume()});
- poster.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX},{passive:true});
- poster.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>40){pause();advance(dx<0?1:-1)}},{passive:true});
- new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;timer()}).observe(poster);
- document.addEventListener('visibilitychange',timer);
- document.addEventListener('languagechange',labels);
- reduced.addEventListener('change',()=>{slide?.progress(1);pause()});
- labels();
+ const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync()});
+ observer.observe(band);
+ const resize=new ResizeObserver(rebuild);
+ resize.observe(band);
+ const enter=()=>{hovered=true;sync()};
+ const leave=()=>{hovered=false;sync()};
+ const focusOut=()=>queueMicrotask(sync);
+ const escape=event=>{if(event.key==='Escape'){stopped=true;sync()}};
+ band.addEventListener('pointerenter',enter);
+ band.addEventListener('pointerleave',leave);
+ band.addEventListener('focusin',sync);
+ band.addEventListener('focusout',focusOut);
+ band.addEventListener('keydown',escape);
+ document.addEventListener('visibilitychange',sync);
+ document.addEventListener('languagechange',rebuild);
+ reduce.addEventListener('change',rebuild);
+ let alive=true;
+ document.fonts.ready.then(()=>{if(alive)rebuild()});
+ rebuild();
+ return ()=>{
+  alive=false;tween?.kill();observer.disconnect();resize.disconnect();
+  band.removeEventListener('pointerenter',enter);band.removeEventListener('pointerleave',leave);
+  band.removeEventListener('focusin',sync);band.removeEventListener('focusout',focusOut);band.removeEventListener('keydown',escape);
+  document.removeEventListener('visibilitychange',sync);document.removeEventListener('languagechange',rebuild);
+  reduce.removeEventListener('change',rebuild);track.querySelector('.band-clone')?.remove();
+  gsap.set(track,{clearProps:'transform'});band.classList.remove('band-ready');
+ };
 }

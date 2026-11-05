@@ -1,3 +1,4 @@
+import {renderPrototype} from './prototype.js';
 import {booking,prices,estimate} from './pricing.js';
 const initial={goal:'leads',presence:'none',web:'landing',plan:'none',units:0,bilingual:false,copy:false,motion:false,custom:false};
 const state={...initial};
@@ -84,8 +85,8 @@ if(typeof document!=='undefined'){
     button.onclick=()=>{select.value=option.value;select.dispatchEvent(new Event('change',{bubbles:true}));};deck.append(button);
    }
   }
-  const kind=state.web==='corporate'?'catalog':state.web==='landing'?'leads':'community';
-  lab.querySelector('[data-panel="1"]').insertAdjacentHTML('beforeend','<div class="scope-art"><small>'+(en?'CONCEPT PROJECT':'PROYECTO CONCEPTUAL')+'</small><svg viewBox="0 0 240 84" aria-hidden="true" fill="#f5f5f5">'+drawings[kind]+'</svg></div><button type="button" data-step="2">'+(en?'Review my project':'Revisar mi proyecto')+' ↗</button>');
+  
+  lab.querySelector('[data-panel="1"]').insertAdjacentHTML('beforeend','<div class="scope-art">'+renderPrototype(state,lang)+'</div><button type="button" data-step="2">'+(en?'Review my project':'Revisar mi proyecto')+' ↗</button>');
   const caption=document.createElement('p');
   caption.className='scope-caption';
   const describeScope=()=>{
@@ -101,7 +102,10 @@ if(typeof document!=='undefined'){
   caption.textContent=describeScope();
   lab.querySelector('.scope-art').append(caption);
   const quantity=lab.querySelector('[data-field=units]');
-  quantity?.addEventListener('input',()=>queueMicrotask(()=>caption.textContent=describeScope()));
+  quantity?.addEventListener('input',()=>queueMicrotask(()=>{
+   caption.textContent=describeScope();
+   lab.querySelector('.project-prototype').outerHTML=renderPrototype(state,lang);
+  }));
   if(step===2){
    const preview=document.createElement('pre');preview.className='final-brief';preview.textContent=brief(lang,state);grid.firstElementChild.append(preview);
    lab.querySelector('[data-action=copy]').insertAdjacentHTML('afterend','<button type="button" data-action="download">'+(en?'Download brief':'Descargar resumen')+'</button>');
@@ -112,13 +116,13 @@ if(typeof document!=='undefined'){
  const refresh=()=>{lab.innerHTML=content(document.documentElement.lang,state).html;
  lab.querySelector('.concept h4').insertAdjacentHTML('afterend','<svg aria-hidden="true" viewBox="0 0 240 84" fill="#f5f5f5"><rect width="240" height="84" fill="#0b0b0d"/>'+drawings[state.goal]+'</svg>');
  document.querySelectorAll('[data-book]').forEach(el=>el.innerHTML=renderBook(document.documentElement.lang));
- enhance();document.dispatchEvent(new Event('labresize'));};
+ enhance();document.dispatchEvent(new CustomEvent('labchange',{detail:estimate(state)}));document.dispatchEvent(new Event('labresize'));};
  lab.addEventListener('input',event=>{
   if(event.target.dataset.field!=='units')return;
   state.units=Math.min(50,Math.max(0,Math.floor(Number(event.target.value)||0)));
   const calculated=document.createElement('template');
   calculated.innerHTML=content(document.documentElement.lang,state).html;
-  lab.querySelector('aside').replaceWith(calculated.content.querySelector('aside'));save();
+  lab.querySelector('aside').replaceWith(calculated.content.querySelector('aside'));save();document.dispatchEvent(new CustomEvent('labchange',{detail:estimate(state)}));
  });
  lab.addEventListener('change',event=>{const el=event.target,key=el.dataset.field;if(!key)return;state[key]=el.type==='checkbox'?el.checked:key==='units'?Math.min(50,Math.max(0,Math.floor(Number(el.value)||0))):el.value;refresh();(lab.querySelector('[data-pick="'+key+'"][aria-pressed=true]')||lab.querySelector('[data-field="'+key+'"]'))?.focus({preventScroll:true});});
  lab.addEventListener('click',async event=>{

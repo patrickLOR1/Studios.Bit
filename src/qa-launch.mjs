@@ -4,7 +4,7 @@ const browser=await chromium.launch({channel:'chrome'});
 try {
  for(const lang of ['es','en']){
   const page=await browser.newPage();
-  const url='http://127.0.0.1:4295/'+lang+'/';
+  const url=(process.env.PREVIEW_URL || 'http://127.0.0.1:4295')+'/'+lang+'/';
   await page.goto(url);
   assert.equal(await page.locator('[data-consent]').count(),0);
   await page.route('**/launch-config.js*',r=>r.fulfill({contentType:'text/javascript',body:'window.studiosLaunch={leadEnabled:true,privacyUrl:"https://example.test/privacy",privacyVersion:"QA"}'}));

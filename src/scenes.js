@@ -1,0 +1,22 @@
+const text=(es,en,lang)=>'<span data-es="'+es+'" data-en="'+en+'">'+(lang==='en'?en:es)+'</span>';
+export function renderTransformation(lang){
+ const t=(es,en)=>text(es,en,lang);
+ return '<section class="transformation" aria-labelledby="transform-title"><div class="transform-copy"><p class="mono">'+t('DE LA POSIBILIDAD A LA EXPERIENCIA','FROM POSSIBILITY TO EXPERIENCE')+'</p><h2 id="transform-title">'+t('Una idea.','One idea.')+'<br><em>'+t('Todo por construir.','Room to become.')+'</em></h2><p>'+t('Le damos dirección. Después, forma. Hasta convertirla en una experiencia que se puede usar.','We give it direction. Then form. Until it becomes an experience people can use.')+'</p><ol class="transform-stages">'+[['Idea','Idea'],['Estrategia','Strategy'],['Diseño','Design'],['Tecnología','Technology'],['Experiencia','Experience']].map(([es,en],i)=>'<li><small>0'+(i+1)+'</small>'+t(es,en)+'</li>').join('')+'</ol></div><div class="transform-art" aria-hidden="true"><div class="art-grid"></div><div class="idea-core"></div><div class="idea-orbit"></div><div class="build-frame"><div class="build-nav"><b>S.</b><i></i><i></i><i></i></div><div class="build-layout"><div><i></i><i></i><i></i><b>↗</b></div><div class="build-sphere"></div></div><div class="build-tiles"><i></i><i></i><i></i></div></div><div class="art-coordinate">S.B / 001</div></div></section>';
+}
+export function renderBridge(lang){
+ const t=(es,en)=>text(es,en,lang);
+ return '<section class="project-bridge"><p class="mono">04 / '+t('AHORA, TU NEGOCIO','NOW, YOUR BUSINESS')+'</p><h2>'+t('¿Y si lo construimos','What if we built it')+'<br><em>'+t('para ti?','for you?')+'</em></h2><a href="#proyecto">'+t('Explorar mi proyecto','Explore my project')+' <span>↓</span></a></section>';
+}
+export function renderClosing(lang){
+ const t=(es,en)=>text(es,en,lang);
+ return '<section class="closing" aria-labelledby="closing-title"><div class="closing-orb" aria-hidden="true"><i></i></div><p class="mono">STUDIOS.BIT / '+t('EL SIGUIENTE MOVIMIENTO','THE NEXT MOVE')+'</p><h2 id="closing-title">'+t('TU PRÓXIMA','YOUR NEXT')+'<br>'+t('GRAN IDEA','GREAT IDEA')+'<br><em>'+t('EMPIEZA AQUÍ.','STARTS HERE.')+'</em></h2><div class="closing-actions"><div data-book></div><a href="#proyecto">'+t('Construir mi proyecto','Build my project')+' ↗</a><a href="#contacto">'+t('Contactar a Studios.Bit','Contact Studios.Bit')+' ↗</a></div></section>';
+}
+export function renderServiceArt(index,lang){
+ const t=(es,en)=>text(es,en,lang);
+ const arts=[
+ '<div class="demo-window"><div class="demo-bar"><b>S.</b><i></i><i></i></div><div class="demo-landing"><div><b class="demo-line"></b><b class="demo-line short"></b><i class="demo-copy"></i><span class="demo-cta">↗</span></div><div class="demo-disc"></div></div><div class="demo-foot"><i></i><i></i><i></i></div></div>',
+ '<div class="site-map"><div class="map-link"></div>'+[['Inicio','Home'],['Servicios','Services'],['Nosotros','About'],['Contacto','Contact']].map(([es,en],i)=>'<div class="map-page map-page-'+i+'"><small>0'+(i+1)+'</small><b>'+t(es,en)+'</b><i></i><i></i></div>').join('')+'</div>',
+ '<div class="social-stack"><div class="social-piece social-square"><span>S.</span><i></i></div><div class="social-piece social-reel"><b>▶</b><i></i></div><div class="social-piece social-editorial"><span>↗</span><i></i><i></i></div></div>'
+ ];
+ return '<div class="service-demo"><div class="demo-caption"><span>'+t('EXPLORACIÓN CONCEPTUAL','CONCEPT EXPLORATION')+'</span><small>0'+(index+1)+' / S.B</small></div><div class="demo-stage" aria-hidden="true">'+arts[index]+'</div><p class="demo-hint">'+t('Toca o enfoca para explorar','Tap or focus to explore')+' ↗</p></div>';
+}

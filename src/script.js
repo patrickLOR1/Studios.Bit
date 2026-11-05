@@ -1,6 +1,3 @@
-const glow = document.querySelector('.cursor-glow');
-window.addEventListener('pointermove', e => { if (matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; } }, { passive: true });
-
 const services = [...document.querySelectorAll('.service')];
 services.forEach(service => {
   const activate = () => {

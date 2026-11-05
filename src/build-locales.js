@@ -1,4 +1,5 @@
 import {readFile,mkdir,writeFile,copyFile,cp} from 'node:fs/promises';
+import {renderTransformation,renderBridge,renderClosing,renderServiceArt} from './scenes.js';
 import vm from 'node:vm';
 import {parseHTML} from 'linkedom';
 import {renderLab,renderBook} from './experience.js';
@@ -18,7 +19,7 @@ await mkdir('dist',{recursive:true});
 await writeFile('dist/launch-config.js','window.studiosLaunch='+JSON.stringify({leadEnabled,privacyUrl,privacyVersion,origin})+';');
 await copyFile('src/launch.js','dist/launch.js');
 await cp('src/assets','dist/assets',{recursive:true});
-for(const file of ['script.js','styles.css','refinements.css','i18n.js','experience.js','pricing.js','project.css']) await copyFile('src/'+file,'dist/'+file);
+for(const file of ['script.js','styles.css','refinements.css','i18n.js','experience.js','pricing.js','project.css','immersive.css','prototype.js']) await copyFile('src/'+file,'dist/'+file);
 const script=await readFile('src/i18n.js','utf8');
 await writeFile('dist/sitemap.xml','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+['es','en'].map(lang=>'<url><loc>'+origin+'/'+lang+'/</loc></url>').join('')+'</urlset>');
 await writeFile('dist/robots.txt',indexable?'User-agent: *\nAllow: /\nSitemap: '+origin+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
@@ -30,6 +31,13 @@ for(const lang of ['es','en']) {
  lab.id='proyecto';
  lab.innerHTML=renderLab(lang);
  document.querySelector('#contacto').before(lab);
+ const insert=(html,before)=>{const holder=document.createElement('div');holder.innerHTML=html;before.before(holder.firstElementChild);};
+ insert(renderTransformation(lang),document.querySelector('#servicios'));
+ insert(renderBridge(lang),lab);
+ insert(renderClosing(lang),document.querySelector('#contacto'));
+ document.querySelectorAll('.service').forEach((service,i)=>{
+   service.querySelector('.service-visual').outerHTML=renderServiceArt(i,lang);
+ });
  const chapters=document.createElement('nav');
  chapters.className='story-chapters';
  chapters.setAttribute('aria-label',lang==='es'?'Recorrido del proyecto':'Project journey');
@@ -48,11 +56,12 @@ for(const lang of ['es','en']) {
    url:origin+'/'+lang+'/#servicios'
  }));
  schema.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[organization,...services]});
- for(const selector of ['.hero-bottom>div','.services','.contact-copy','footer']){
-   const slot=document.createElement('div');
+ for(const selector of ['.hero-bottom>div','.services','.contact-copy','footer','.closing [data-book]']){
+   const target=document.querySelector(selector);
+   const slot=target.hasAttribute('data-book')?target:document.createElement('div');
    slot.setAttribute('data-book','');
    slot.innerHTML=renderBook(lang);
-   document.querySelector(selector).append(slot);
+   if(slot!==target)target.append(slot);
  }
  await mkdir(`dist/${lang}`,{recursive:true});
  await writeFile(`dist/${lang}/index.html`,'<!doctype html>\n'+document.documentElement.outerHTML);
