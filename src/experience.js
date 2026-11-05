@@ -9,7 +9,7 @@ const content=(lang,s)=> {
  const options=(key,items)=>items.map(([value,label])=>'<option value="'+value+'" '+(s[key]===value?'selected':'')+'>'+label+'</option>').join('');
  const select=(key,label,items)=>'<label>'+label+'<select data-field="'+key+'">'+options(key,items)+'</select></label>';
  const check=(key,label)=>'<label class="check"><input type="checkbox" data-field="'+key+'" '+(s[key]?'checked':'')+'>'+label+'</label>';
- const book='<a class="book-link" target="_blank" rel="noopener noreferrer" href="'+booking+'">'+t('Agendar asesoría gratuita','Book a free web consultation')+' ↗</a>';
+ const book=renderBook(lang);
  const services={landing:t('Página de captación','Landing page'),corporate:t('Sitio corporativo','Corporate website'),social:t('Redes sociales','Social media')};
  const recommendation=s.goal==='leads'?'landing':s.goal==='catalog'?'corporate':'social';
  const reason={landing:t('Una oferta y una acción clara ayudan a que una visita se convierta en consulta.','One offer and a clear next step give visitors a direct path to an enquiry.'),corporate:t('Las páginas independientes dan a cada servicio el contexto que necesita.','Separate pages give each service room for detail.'),social:t('Un calendario editorial da continuidad a la conversación con tu audiencia.','An editorial calendar keeps the conversation with your audience going.')}[recommendation];
@@ -41,7 +41,10 @@ const content=(lang,s)=> {
  <h3>${t('Antes de empezar','Before you start')}</h3>${faqs.map(([q,a])=>'<details><summary>'+q+'</summary><p>'+a+'</p></details>').join('')}</div>`};
 };
 export function renderLab(lang){return content(lang,initial).html;}
-export function renderBook(lang){return content(lang,initial).book;}
+export function renderBook(lang){
+ const label=lang==='en'?'Book a free web consultation':'Agendar asesoría gratuita';
+ return '<a class="book-link" target="_blank" rel="noopener noreferrer" href="'+booking+'">'+label+' ↗</a>';
+}
 const drawings={
  leads:'<rect x="16" y="16" width="78" height="7"/><rect x="16" y="34" width="144" height="5"/><rect x="16" y="52" width="64" height="17" fill="currentColor"/><circle cx="202" cy="43" r="26" fill="currentColor"/>',
  catalog:'<rect x="16" y="14" width="100" height="7"/><path d="M16 30h208" stroke="white"/><path d="M16 40h58v28H16z M84 40h58v28H84z" fill="#9ca3af"/><rect x="152" y="40" width="70" height="28" fill="currentColor"/>',
@@ -85,7 +88,7 @@ if(typeof document!=='undefined'){
     button.onclick=()=>{select.value=option.value;select.dispatchEvent(new Event('change',{bubbles:true}));};deck.append(button);
    }
   }
-  
+
   lab.querySelector('[data-panel="1"]').insertAdjacentHTML('beforeend','<div class="scope-art">'+renderPrototype(state,lang)+'</div><button type="button" data-step="2">'+(en?'Review my project':'Revisar mi proyecto')+' ↗</button>');
   const caption=document.createElement('p');
   caption.className='scope-caption';
@@ -115,7 +118,6 @@ if(typeof document!=='undefined'){
  }
  const refresh=()=>{lab.innerHTML=content(document.documentElement.lang,state).html;
  lab.querySelector('.concept h4').insertAdjacentHTML('afterend','<svg aria-hidden="true" viewBox="0 0 240 84" fill="#f5f5f5"><rect width="240" height="84" fill="#0b0b0d"/>'+drawings[state.goal]+'</svg>');
- document.querySelectorAll('[data-book]').forEach(el=>el.innerHTML=renderBook(document.documentElement.lang));
  enhance();document.dispatchEvent(new CustomEvent('labchange',{detail:estimate(state)}));document.dispatchEvent(new Event('labresize'));};
  lab.addEventListener('input',event=>{
   if(event.target.dataset.field!=='units')return;
@@ -141,6 +143,7 @@ if(typeof document!=='undefined'){
  document.querySelector('#service').value=state.web!=='none'?state.web:state.plan!=='none'?'social':'other';details.dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('#name').focus();
  });
  document.addEventListener('languagechange',()=>{
+  document.querySelectorAll('[data-book]').forEach(el=>el.innerHTML=renderBook(document.documentElement.lang));
   refresh();
   const details=document.querySelector('#details');
   if(details.dataset.lastQuote && details.value.includes(details.dataset.lastQuote)){

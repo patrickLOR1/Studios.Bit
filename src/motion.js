@@ -68,15 +68,13 @@ function mount(){
    .from('.build-nav i',{scaleX:0,stagger:.05,transformOrigin:'left'},.35)
    .from('.build-layout>*',{y:30,opacity:0,stagger:.1},.55)
    .from('.build-tiles i',{scaleY:0,transformOrigin:'bottom',stagger:.1},.8);
-  gsap.utils.toArray('.transform-stages li').forEach((el,i)=>{
-   gsap.from(el,{x:12,opacity:.4,duration:.45,clearProps:'transform,opacity',scrollTrigger:{trigger:'.transformation',start:()=> 'top '+(85-i*9)+'%',once:true}});
-  });
+  transform.from('.transform-stages li',{x:10,stagger:.12,duration:.28},0);
 
   document.querySelectorAll('.service').forEach((service,index)=>{
    const art=service.querySelector('.demo-stage');
    const pieces=art.querySelectorAll(index===0?'.demo-landing>* , .demo-foot i':index===1?'.map-page':'.social-piece');
    const reveal=gsap.timeline({paused:true,defaults:{ease:'power3.out'}});
-   reveal.fromTo(pieces,{y:20,rotation:index===2?-6:0,opacity:.5},{y:0,rotation:0,opacity:1,stagger:.08,duration:.55,clearProps:'transform,opacity'});
+   reveal.fromTo(pieces,{y:20,rotation:index===2?-6:0},{y:0,rotation:0,opacity:1,stagger:.08,duration:.55,clearProps:'transform,opacity'});
    const play=()=>{if(!reveal.isActive())reveal.restart()};
    ScrollTrigger.create({trigger:service,start:'top 80%',once:true,onEnter:play});
    on(service,'pointerenter',play);on(service,'focusin',play);on(service,'pointerdown',play);
