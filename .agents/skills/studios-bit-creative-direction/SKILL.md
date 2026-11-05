@@ -1,17 +1,20 @@
 ---
 name: studios-bit-creative-direction
-description: Dirige y evalúa el diseño, experiencia interactiva, motion y contenido de Studios.Bit. Usar para landings, sitios, portafolios, carruseles, Reels, TikTok, Facebook, rediseños y auditorías visuales; inspira el criterio en siete referencias curadas por el usuario.
+description: Guía reusable de dirección creativa de la agencia Studios.Bit para futuros proyectos de clientes: sitios web, branding, interfaces, motion, campañas, reels y diseño de contenidos, a partir de siete referencias seleccionadas. Adaptar cada técnica a la marca y el brief del cliente, sin copiar diseños.
 ---
 
 # Studios.Bit — Creative Direction v0.2
 **Fecha:** 2026-11-05. **Estado:** guía de diseño basada en siete referencias, NO un modelo reentrenado.
 
 ## 1. Propósito
-Studios.Bit es una agencia digital mexicana premium y minimalista. Servicios iniciales: landing pages, sitios corporativos y gestión de redes sociales. Lema: **Ideas que conectan. Soluciones que transforman.**
+**Uso principal:** establecer un criterio creativo reutilizable para los proyectos que Studios.Bit desarrollará para sus clientes, no generar cambios automáticos en la web de Studios.Bit. Cada proyecto debe tener su propia dirección artística, identidad visual, objetivos, alcance y aprobación.
+
+Studios.Bit es una agencia digital mexicana premium y minimalista. Servicios iniciales: landing pages, sitios corporativos y gestión de redes sociales. Lema de la agencia: **Ideas que conectan. Soluciones que transforman.**
 
 Equilibrar diferenciación visual, claridad, confianza, viabilidad comercial y generación de contactos. No inventar clientes, testimonios, cifras o capacidades; identificar demos como **Proyecto conceptual**.
 
-## 2. Identidad visual y decisiones aprobadas
+## 2. Identidad de la agencia (solo para el sitio y activos propios de Studios.Bit)
+**Regla de alcance:** los colores, tipografía, logotipo, navegación y efectos indicados aquí están aprobados para la marca Studios.Bit. **NO son una plantilla obligatoria para marcas clientes.** En proyectos externos, respetar primero el manual de marca y los requisitos del cliente; definir tokens propios y justificar decisiones sin copiar el diseño de la agencia.
 - Colores oficiales: negro **#0B0B0D**, blanco **#F5F5F5**, gris **#9CA3AF** y naranja **#FF6A00**. No tratar el naranja como propuesta o rebranding. Reutilizar los tokens y logotipos existentes.
 - Fuente: **Manrope**. Composición editorial, jerarquía clara, buen contraste y espacio negativo intencionado.
 - Mantener la **navegación premium** en cápsula oscura, indicador naranja, idiomas y CTA. Los enlaces deben seguir el orden real de las secciones.
@@ -20,7 +23,15 @@ Equilibrar diferenciación visual, claridad, confianza, viabilidad comercial y g
 - Mantener storytelling, servicios conceptuales, diagnóstico, cotizador, resumen descargable, español/inglés, Setmore y Formspree tal como estén aprobados.
 - No modificar **precios, paquetes, reglas de cotización, formularios, integraciones, privacidad o SEO/AEO** por motivos estéticos sin permiso expreso.
 
-## 3. Sistema de motion y UX
+## 3. Adaptación a futuros proyectos de clientes
+- Partir del brief y del sector del cliente: audiencia, objetivo, personalidad, accesibilidad, presupuesto, plataforma y entregables.
+- Elegir uno o dos patrones SB-xx relevantes como inspiración para resolver un problema real; explicar la adaptación y lo que no se copiará.
+- Definir un sistema visual independiente por cliente (paleta, tipografías, ritmo, componentes, imágenes, voz); nunca imponer el naranja de Studios.Bit.
+- Proponer primero concepto y pruebas visuales; no implementar animaciones, cambiar contenido o publicar sin autorización del cliente.
+- Construir un historial de decisiones y resultados por proyecto, con evidencia; alimentar esta skill con patrones generalizables cuando se validen.
+- Esta skill alojada en el repositorio de la agencia solo se descubre allí. Para utilizarla automáticamente en repositorios de nuevos clientes, instalarla en el entorno de Codex compartido o copiar la carpeta de la skill al nuevo proyecto y enlazarla desde su AGENTS.md.
+
+## 4. Sistema de motion y UX
 - Movimiento con propósito: revelar, orientar y responder; priorizar continuidad, no cantidad de efectos.
 - Evitar scroll-jacking, largos retrasos, saltos, animaciones que bloquean el contenido y solapamientos de headers sticky.
 - Coordinar Lenis, GSAP, ScrollTrigger, scroll nativo y offsets de anclas; un solo responsable por acción de desplazamiento.
@@ -28,7 +39,7 @@ Equilibrar diferenciación visual, claridad, confianza, viabilidad comercial y g
 - Respetar prefers-reduced-motion, teclado, foco, tamaños táctiles y lectura sin JavaScript.
 - El sitio debe transmitir un nivel premium sin parecer una plantilla genérica de IA.
 
-## 4. Siete referencias visuales
+## 5. Siete referencias visuales
 Consultar `references/REFERENCIAS.md` y, si están disponibles en la copia local, las imágenes `references/frames/`.
 
 | Código | Patrón que puede inspirar | Precaución |
@@ -43,7 +54,7 @@ Consultar `references/REFERENCIAS.md` y, si están disponibles en la copia local
 
 **No clonar:** técnicas y gramática visual sí; interfaz, marca, activos y animación exacta de terceros no.
 
-## 5. Flujo para cada propuesta
+## 6. Flujo para cada propuesta
 1. **Brief:** público, objetivo verificable, CTA, plataforma, restricciones, assets y estado actual.
 2. **Referencias:** máximo dos patrones SB-xx principales; justificar qué funciona y qué no se copiará.
 3. **Jerarquía:** qué debe entender el cliente en 3 segundos.
@@ -53,7 +64,7 @@ Consultar `references/REFERENCIAS.md` y, si están disponibles en la copia local
 7. **QA:** revisar 320/390/768/1440 px, foco, enlaces, scroll rápido/lento, teclados, formularios, performance, reflow y lenguaje.
 8. **Evidencia:** preview, capturas, trazas o video y reporte de lo probado; separar hechos de hipótesis.
 
-## 6. Redes sociales
+## 7. Redes sociales
 Equilibrar contenido visual atractivo con criterio demostrable y educación. Series propuestas:
 - **Bit Audit:** tres hallazgos reales y propuesta de corrección, sin ridiculizar terceros.
 - **1 Bit de Diseño:** explicar una decisión visual y su implicación UX.
@@ -63,7 +74,7 @@ Equilibrar contenido visual atractivo con criterio demostrable y educación. Ser
 
 Instagram: Reels/Stories/carruseles con CTA adecuado. TikTok: demostración y relato natural. Facebook: contexto comercial local. No atribuir métricas o resultados sin período, fuente y evidencia.
 
-## 7. Puntuación de calidad (100)
+## 8. Puntuación de calidad (100)
 | Dimensión | Peso |
 |---|---:|
 | Claridad del mensaje | 20 |
@@ -75,7 +86,7 @@ Instagram: Reels/Stories/carruseles con CTA adecuado. TikTok: demostración y re
 
 Umbral sugerido: **80/100**, con veto ante problemas críticos de accesibilidad, legibilidad, propiedad intelectual o afirmaciones falsas.
 
-## 8. Actualización continua
+## 9. Actualización continua
 Para nuevos videos:
 1. Asignar SB-08, SB-09...; registrar fuente, fecha y licencia si se conoce.
 2. Analizar secuencia, ritmo, tipografía, composición, interacción, propósito y riesgos.
@@ -85,8 +96,8 @@ Para nuevos videos:
 6. Actualizar `references/CHANGELOG.md`, versión y casos probados.
 7. Probar una pieza antes de convertir el patrón en regla general.
 
-## 9. Formato de entrega
+## 10. Formato de entrega
 Objetivo y público, concepto, referencias SB-xx usadas, estructura, decisiones visuales, motion y fallback, riesgos, criterios de prueba, archivos modificados y resultados verificables.
 
-## 10. Repositorio
+## 11. Repositorio
 En el repositorio público están las instrucciones y fichas. Los siete fotogramas originales se incluyen en el **ZIP de instalación proporcionado por el usuario**, para revisión local; no se publican los fotogramas de terceros en GitHub. La falta de imágenes locales no invalida el catálogo textual.
