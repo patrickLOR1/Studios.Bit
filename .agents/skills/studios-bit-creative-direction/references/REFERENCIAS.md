@@ -1,5 +1,5 @@
-# Catálogo — nueve referencias Studios.Bit
-**Origen:** nueve grabaciones MP4 de publicaciones de terceros seleccionadas por el usuario; alta 2026-11-05. No son trabajos propios, ni demuestran conversión.
+# Catálogo — diez referencias Studios.Bit
+**Origen:** diez grabaciones MP4 de publicaciones de terceros seleccionadas por el usuario; alta 2026-11-05. No son trabajos propios, ni demuestran conversión.
 
 ## SB-01 — 10.15.03 | Portafolio tipo libro
 - **Observado:** portafolio que cambia como páginas y pliegos con retícula editorial oscura.
@@ -73,9 +73,19 @@
 - **Fuente local:** `references/videos/SB-09_real-estate-tour.mp4` y `references/frames/SB-09_property-journey.jpg` del ZIP privado, no GitHub público.
 - **Estado:** observado; aplicación comercial solo con alcance y recursos reales.
 
+## SB-10 — Portafolio narrativo: puertas, profesiones y línea temporal
+- **Fuente:** video de Instagram compartido por el usuario el 05-nov-2026 (duración ~21.6 s; terceros visibles `rishithakor.creates` y `therishithakor`). El material se utiliza como referencia interna de contenido y diseño; no es un proyecto de Studios.Bit.
+- **Observación visual:** en un sitio de portafolio se ven puertas de colores como metáfora de secciones, hero editorial claro con fotografía del diseñador y profesión que cambia cinéticamente («App Developer», «Graphic Designer», «UI/UX Designer»), timeline oscura con años «2026» y «2022», y casos presentados en mockups de monitores.
+- **Para diseñar:** narrativa `presentación → habilidades → trayectoria → trabajos → contacto`; navegación por capítulos o metáforas afines a la marca del cliente, transiciones de texto, revelados y continuidad editorial. No imponer puertas ni tono oscuro a todos los clientes.
+- **Para contenido:** Reel con tesis inicial («un buen portafolio cuenta una historia») → demostración rápida de interacción → trayectoria y proyectos → aprendizaje y CTA. Ver `CONTENIDO_Y_FORMATOS.md`.
+- **Rendimiento/accesibilidad:** animaciones rápidas y reversibles, controles convencionales disponibles, navegación por teclado, diseño móvil y reduced-motion; evitar scroll-jacking, retrasos y pérdida de orientación.
+- **Legal y credibilidad:** no copiar activos, fotos, puertas, composiciones o música ni presentar la web del video como trabajo nuestro. Rotular demos propios como «Proyecto conceptual».
+- **Referencia visual privada:** `references/videos/SB-10_portfolio-narrativo.mp4`; fotogramas en `references/frames/` (fuera de GitHub).
+- **Estado:** observado, pendiente de evaluación por proyecto.
+
 ## Plantilla para nueva referencia
 ```md
-### SB-10 — [enlace/archivo] | [título]
+### SB-11 — [enlace/archivo] | [título]
 - Procedencia y fecha:
 - Objetivo de la referencia:
 - Uso para dirección de contenido (gancho, ritmo, narrativa, CTA):
