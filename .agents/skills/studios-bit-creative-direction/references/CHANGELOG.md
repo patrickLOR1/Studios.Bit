@@ -1,5 +1,11 @@
 # Evolución de la skill
 
+## v0.4 — SB-10: portafolio narrativo (2026-11-05)
+- Agregada una décima referencia desde el nuevo video: puertas metafóricas, alternancia de perfiles profesionales, timeline y presentación de proyectos.
+- Análisis dual: patrón de diseño e idea original de Reel/carrusel para contenidos de Studios.Bit y proyectos de clientes.
+- El video y fotogramas de tercero quedan en un paquete privado local, no en GitHub.
+
+
 ## v0.3 — Dos referencias nuevas y dirección de contenido (2026-11-05)
 - Incorporadas SB-08 (heroes originales y gancho comparativo) y SB-09 (recorrido inmobiliario interactivo) a partir de dos MP4 suministrados por el usuario.
 - Establecido análisis dual de cada referencia: diseño/UX **y contenido** para Reels, TikTok, Facebook y piezas educativas.
