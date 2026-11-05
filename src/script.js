@@ -8,22 +8,6 @@ services.forEach(service => {
   service.addEventListener('focusin', activate);
 });
 
-const menuToggle = document.querySelector('.menu-toggle');
-const mainNav = document.querySelector('#main-nav');
-const closeMenu = () => {
-  menuToggle.setAttribute('aria-expanded', 'false');
-  document.body.classList.remove('menu-open');
-  menuToggle.querySelector('.sr-only').textContent = translate('Abrir menú','Open menu');
-};
-menuToggle.addEventListener('click', () => {
-  const open = menuToggle.getAttribute('aria-expanded') === 'true';
-  menuToggle.setAttribute('aria-expanded', String(!open));
-  document.body.classList.toggle('menu-open', !open);
-  menuToggle.querySelector('.sr-only').textContent = open ? translate('Abrir menú','Open menu') : translate('Cerrar menú','Close menu');
-});
-mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
-
 document.querySelectorAll('.service-select').forEach(button => button.addEventListener('click', () => {
   document.querySelector('#service').value = button.dataset.service;
   document.querySelector('#service').dispatchEvent(new Event('input', { bubbles: true }));

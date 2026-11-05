@@ -7,7 +7,8 @@ const copy = {
  '.decision-link':['Descubre lo que tu negocio necesita ↗','Discover what your business needs ↗'],
  '.skip-link':['Saltar al contenido','Skip to content'],
  '#main-nav a':['Servicios|Estudio|Proceso|Contacto','Services|Studio|Process|Contact'],
- '.nav-cta':['Hablemos ↗',"Let’s talk ↗"],
+ '.nav-close':['Cerrar <span aria-hidden="true">×</span>','Close <span aria-hidden="true">×</span>'],
+ '.nav-cta':['Iniciar proyecto ↗','Start a project ↗'],
  '.hero-kicker':['<span class="pulse"></span> CREATIVIDAD · DIGITAL · TECNOLOGÍA','<span class="pulse"></span> CREATIVE · DIGITAL · TECHNOLOGY'],
  '.hero h1':['Ideas que<br><span>conectan.</span><br>Soluciones que<br>transforman.','Ideas that<br><span>connect.</span><br>Solutions that<br>transform.'],
  '.hero-bottom p':['Creatividad, estrategia y tecnología en un solo lugar. Diseñamos experiencias digitales que ayudan a las marcas a avanzar.','Creativity, strategy and technology in one place. We design digital experiences that help brands move forward.'],
@@ -69,7 +70,7 @@ function setLanguage(lang) {
  document.documentElement.lang=lang;
  document.querySelectorAll('[data-es][data-en]').forEach(el=>el.textContent=el.dataset[lang]);
  for(const [selector,values] of Object.entries(copy)) { const parts=values[n].split('|'); document.querySelectorAll(selector).forEach((el,i)=>el.innerHTML=parts.length===1?parts[0]:parts[i]); }
- const attrs=[['#name','placeholder','Tu nombre','Your name'],['#email','placeholder','tu@correo.com','you@example.com'],['#details','placeholder','Objetivos, retos, tiempos...','Goals, challenges, timeline...'],['#main-nav','aria-label','Navegación principal','Main navigation'],['.circle-link','aria-label','Explorar servicios','Explore services'],['.brand','aria-label','Studios.Bit, inicio','Studios.Bit, home'],['.brand img','alt','Studios.Bit — Agencia Digital','Studios.Bit — Digital Agency'],['.audience-band','aria-label','Emprendedores, pymes, negocios locales, marcas y empresas','Entrepreneurs, small businesses, local businesses, brands and companies']];
+ const attrs=[['#navigation-dialog','aria-label','Navegación principal','Main navigation'],['#name','placeholder','Tu nombre','Your name'],['#email','placeholder','tu@correo.com','you@example.com'],['#details','placeholder','Objetivos, retos, tiempos...','Goals, challenges, timeline...'],['#main-nav','aria-label','Navegación principal','Main navigation'],['.circle-link','aria-label','Explorar servicios','Explore services'],['.brand','aria-label','Studios.Bit, inicio','Studios.Bit, home'],['.brand img','alt','Studios.Bit — Agencia Digital','Studios.Bit — Digital Agency'],['.audience-band','aria-label','Emprendedores, pymes, negocios locales, marcas y empresas','Entrepreneurs, small businesses, local businesses, brands and companies']];
  attrs.forEach(([selector,attr,es,en])=>document.querySelectorAll(selector).forEach(el=>el.setAttribute(attr,n?en:es)));
  document.querySelectorAll('[data-lang]').forEach(el=>{el.setAttribute('aria-pressed',String(el.dataset.lang===lang));el.setAttribute('aria-label',el.dataset.lang==='es'?'Español':'English');});
  document.querySelectorAll('.languages').forEach(el=>el.setAttribute('aria-label',n?'Language':'Idioma'));
