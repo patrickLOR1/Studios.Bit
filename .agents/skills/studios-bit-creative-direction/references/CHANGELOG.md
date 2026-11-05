@@ -1,5 +1,11 @@
 # Evolución de la skill
 
+## v0.2.1 — Aclaración de alcance (2026-11-05)
+- La skill está destinada principalmente a **futuros proyectos de clientes de Studios.Bit**, no a un rediseño permanente de la landing de la agencia.
+- Separada la identidad propia de Studios.Bit de las identidades de clientes: el naranja, Manrope y los componentes aprobados no se imponen a otras marcas.
+- Especificada la necesidad de instalar o enlazar la skill en cada repositorio nuevo de Codex.
+
+
 ## v0.2 — 2026-11-05
 - Adaptada al flujo de Codex mediante `.agents/skills/` y referencia desde el `AGENTS.md` raíz.
 - Catálogo SB-01 a SB-07 derivado de siete videos del usuario.
