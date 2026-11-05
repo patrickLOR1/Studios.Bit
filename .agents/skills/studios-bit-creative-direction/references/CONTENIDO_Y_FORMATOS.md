@@ -1,7 +1,7 @@
 # Estudios de contenido — Studios.Bit Creative Direction v0.3
 
 ## Objetivo
-Usar **los nueve videos SB-01 a SB-09** como referencias para dos entregables distintos: (a) dirección de diseño de futuros trabajos de clientes; (b) **guion, edición, motion, estructura narrativa y pedagogía** de contenido de Studios.Bit y, si lo aprueba cada cliente, de sus redes sociales.
+Usar **los diez videos SB-01 a SB-09** como referencias para dos entregables distintos: (a) dirección de diseño de futuros trabajos de clientes; (b) **guion, edición, motion, estructura narrativa y pedagogía** de contenido de Studios.Bit y, si lo aprueba cada cliente, de sus redes sociales.
 
 Estas referencias son materiales de terceros, no muestras del portafolio ni evidencia de clientes, facturación, conversiones o resultados de Studios.Bit. Extraer la **gramática de contenido**, nunca reproducir sus grabaciones, voz, música, marcas, personajes, logos ni composiciones literalmente. Los videos compartidos se revisaron visualmente; sin transcripción de audio verificada, no atribuir declaraciones habladas.
 
@@ -27,8 +27,9 @@ Estas referencias son materiales de terceros, no muestras del portafolio ni evid
 | SB-07 | Recorrido cinematográfico, acercamientos y textos dramáticos | Reel sobre la experiencia de visitar una marca, no solo ver un sitio |
 | **SB-08** | Gancho crítico «deja de hacer heroes genéricos» → montaje rápido de ejemplos contrastantes → regreso al creador | Reel original «3 maneras de hacer que tu primera pantalla no parezca una plantilla»: composición editorial, bento, escena inmersiva; utilizar prototipos propios |
 | **SB-09** | Una afirmación comercial muy visible → demostración continua de una web inmobiliaria con exterior, plantas, interior y amenidades | Reel «Una web inmobiliaria que puedes explorar»: demo 3D propia y explicación de UX, sin repetir ni adoptar el supuesto precio de $3,350 como tarifa |
+| **SB-10** | Gancho sobre la personalidad del portafolio → demo de puertas, profesión cambiante, línea temporal y proyectos | Reel «Un portafolio también puede contar una historia»: prototipo original, recorrido visual y CTA educativo |
 
-## Dos fichas de guion (ideas para probar, no piezas aprobadas)
+## Fichas de guion (ideas para probar, no piezas aprobadas)
 
 ### Reel A — SB-08: «Tres primeras pantallas, tres historias»
 - **0–2 s:** «¿Todas las webs de tu industria se ven iguales?» sobre split-screen de tres diseños conceptuales propios.
@@ -45,6 +46,13 @@ Estas referencias son materiales de terceros, no muestras del portafolio ni evid
 - **18–24 s:** «Lo importante no es el 3D: es ayudar a tomar una decisión».
 - **24–28 s:** CTA «¿Tu proyecto necesita una experiencia o una página informativa?».
 - **Producción:** renders propios/licenciados y rotulación explícita «Proyecto conceptual». No afirmar que ya vendimos este servicio ni repetir la cifra del video.
+
+## Contenido original basado en SB-10 — «Tu portafolio también puede contar una historia»
+**Gancho:** «Un portafolio no necesita más tarjetas; necesita una historia clara».
+**Demostración:** una comparación de prototipos PROPIOS: portafolio estático → capítulos navegables → cambio cinético de especialidad → línea temporal → proyecto destacado.
+**Aprendizaje:** «El movimiento ayuda a entender quién eres y a encontrar lo que haces mejor; no es decoración».
+**CTA:** «¿Qué debería descubrir primero un cliente sobre tu trabajo?».
+**Formato:** Reel/TikTok de 20–30 s; versión carrusel explicando jerarquía, timeline y CTA. No imitar literalmente la interfaz ni reutilizar imágenes, audio o marcas del video de terceros. Identificar demos como proyecto conceptual.
 
 ## Criterios de contenido de autoridad
 - **Confianza:** procesos reales, límites y decisiones; mostrar tanto razón como resultado.
