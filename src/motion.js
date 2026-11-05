@@ -33,7 +33,8 @@ function mount(){
   const on=(target,event,listener,options)=>{target.addEventListener(event,listener,options);disposers.push(()=>target.removeEventListener(event,listener,options))};
   let lenis,tick;
   if(interactive){
-   lenis=new Lenis({smoothWheel:true,syncTouch:false,anchors:true,duration:.85});
+   lenis=new Lenis({smoothWheel:true,syncTouch:false,anchors:false,duration:.85});
+   window.studiosScroll.setEngine(lenis);
    lenis.on('scroll',ScrollTrigger.update);
    tick=time=>lenis.raf(time*1000);
    gsap.ticker.add(tick);
@@ -53,7 +54,7 @@ function mount(){
   intro.from('.nav .brand img',{clipPath:'inset(0 100% 0 0)',duration:.65,clearProps:'clipPath'},0)
    .from('.hero-signature img',{clipPath:'inset(0 100% 0 0)',duration:.65,clearProps:'clipPath'},0)
    .from('.hero-signature span',{x:10,opacity:.3,duration:.65,clearProps:'transform,opacity'},.12)
-   .from('.orb',{scale:.65,rotation:-18,opacity:.4,duration:1.1,clearProps:'transform,opacity'},0)
+   .from('.orb i',{opacity:.4,duration:1.1,clearProps:'opacity'},0)
    .from(lines.map(line=>line.firstChild),{yPercent:65,opacity:.65,duration:.85,stagger:.09,clearProps:'transform,opacity'},.12)
    .from('.hero-bottom',{y:14,opacity:.5,duration:.65,clearProps:'transform,opacity'},.45);
   gsap.to('.orb',{yPercent:desktop?24:10,scale:.76,rotation:28,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.5}});
@@ -103,17 +104,25 @@ function mount(){
   }
   return ()=>{
    disposers.forEach(dispose=>dispose());
-   if(tick)gsap.ticker.remove(tick);lenis?.destroy();
+   if(tick)gsap.ticker.remove(tick);
+   window.studiosScroll.setEngine(null);lenis?.destroy();
    document.documentElement.classList.remove('motion-scroll');
    if(lines[0]?.parentNode===heading)heading.replaceChildren(...original);
   };
  });
 }
 function unmount(){media?.revert();navContext?.revert();cleanupBand?.()}
-let refreshFrame;
-function refresh(){cancelAnimationFrame(refreshFrame);refreshFrame=requestAnimationFrame(()=>ScrollTrigger.refresh())}
-document.addEventListener('languagechange',()=>{unmount();mount();refresh()});
-document.addEventListener('labresize',refresh);
+let refreshTimer;
+function refresh(){
+ clearTimeout(refreshTimer);
+ refreshTimer=setTimeout(()=>{
+  if(ScrollTrigger.isScrolling()){refresh();return}
+  ScrollTrigger.refresh();
+ },180);
+}
+const labObserver=new ResizeObserver(refresh);
+labObserver.observe(document.querySelector('#proyecto'));
+document.addEventListener('languagechange',()=>{translateChapters();refresh()});
 document.fonts.ready.then(refresh);
 window.addEventListener('pagehide',unmount);
 window.addEventListener('pageshow',event=>{if(event.persisted){mount();refresh()}});

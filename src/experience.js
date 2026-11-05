@@ -70,7 +70,7 @@ if(typeof document!=='undefined'){
  function go(value){
   if(value===2 && step!==2 && (state.web!=='none'||state.plan!=='none')) document.dispatchEvent(new Event('studios:quote-complete'));
   step=value;refresh();
-  const nav=lab.querySelector('.lab-steps');nav.scrollIntoView({block:'start'});nav.querySelector('[aria-current=step]').focus({preventScroll:true});
+  const nav=lab.querySelector('.lab-steps');window.studiosScroll.navigate(nav,{focus:nav.querySelector('[aria-current=step]')});
  }
  function enhance(){
   const lang=document.documentElement.lang,en=lang==='en';
@@ -140,7 +140,7 @@ if(typeof document!=='undefined'){
  details.value=[notes,summary].filter(Boolean).join('\n\n');
  details.dataset.lastQuote=summary;
  details.dataset.quoteState=JSON.stringify(state);
- document.querySelector('#service').value=state.web!=='none'?state.web:state.plan!=='none'?'social':'other';details.dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('#name').focus();
+ document.querySelector('#service').value=state.web!=='none'?state.web:state.plan!=='none'?'social':'other';details.dispatchEvent(new Event('input',{bubbles:true}));window.studiosScroll.navigate(document.querySelector('#contacto'),{focus:document.querySelector('#name')});
  });
  document.addEventListener('languagechange',()=>{
   document.querySelectorAll('[data-book]').forEach(el=>el.innerHTML=renderBook(document.documentElement.lang));

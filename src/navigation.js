@@ -42,12 +42,20 @@ function select(link){
  links.forEach(el=>el===link?el.setAttribute('aria-current','location'):el.removeAttribute('aria-current'));
  position();
 }
+let activationLine=0;
+function measureSections(){
+ activationLine=window.studiosScroll.inset()+Math.min(innerHeight*.12,90);
+ for(const section of sections)section.top=scrollY+section.target.getBoundingClientRect().top;
+ scrollUpdate();
+}
+const geometry=new ResizeObserver(measureSections);
+document.querySelectorAll('main>section,main>.story-chapters,.nav').forEach(el=>geometry.observe(el));
 function readScroll(){
  scrollFrame=0;
  header.classList.toggle('floating',scrollY>32);
- const line=header.offsetHeight+Math.min(innerHeight*.22,150);
+ const line=scrollY+activationLine;
  let current=sections[0];
- for(const section of sections)if(section.target.getBoundingClientRect().top<=line)current=section;
+ for(const section of sections)if(section.top<=line)current=section;
  select(current.link);
 }
 function scrollUpdate(){if(!scrollFrame)scrollFrame=requestAnimationFrame(readScroll)}
@@ -89,10 +97,7 @@ function closeMenu(destination,immediate=false){
   dialog.close();restore();
   if(destination){
    const target=document.querySelector(destination);
-   if(location.hash!==destination)history.pushState(null,'',destination);
-   target.setAttribute('tabindex','-1');
-   target.focus({preventScroll:true});
-   target.scrollIntoView({behavior:reduced.matches?'instant':'smooth'});
+   window.studiosScroll.navigate(target,{hash:destination});
   }else (mobile.matches?toggle:active)?.focus({preventScroll:true});
  };
  if(immediate||reduced.matches){finish();return}
@@ -118,6 +123,6 @@ document.addEventListener('languagechange',()=>{labels();position(true)});
 window.addEventListener('scroll',scrollUpdate,{passive:true});
 new ResizeObserver(()=>{position(true);scrollUpdate()}).observe(nav);
 document.fonts.ready.then(()=>position(true));
-labels();readScroll();position(true);
+labels();measureSections();readScroll();position(true);
 
 

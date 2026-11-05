@@ -11,8 +11,7 @@ services.forEach(service => {
 document.querySelectorAll('.service-select').forEach(button => button.addEventListener('click', () => {
   document.querySelector('#service').value = button.dataset.service;
   document.querySelector('#service').dispatchEvent(new Event('input', { bubbles: true }));
-  document.querySelector('#contacto').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-  document.querySelector('#name').focus({ preventScroll: true });
+  window.studiosScroll.navigate(document.querySelector('#contacto'),{focus:document.querySelector('#name')});
 }));
 
 const form = document.querySelector('#project-form');
@@ -46,7 +45,7 @@ form.addEventListener('submit', e => {
   }
   prepare();
   document.querySelector('.message-result').hidden = false;
-  document.querySelector('.message-result').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'nearest' });
+  window.studiosScroll.navigate(document.querySelector('.message-result'),{nearest:true,focus:null});
 });
 
 document.querySelector('#copy-message').addEventListener('click', async () => {
