@@ -1,10 +1,10 @@
 ---
 name: studios-bit-creative-direction
-description: Guía reusable de dirección creativa de la agencia Studios.Bit para futuros proyectos de clientes: sitios web, branding, interfaces, motion, campañas, reels y diseño de contenidos, a partir de nueve referencias seleccionadas. Adaptar cada técnica a la marca y el brief del cliente, sin copiar diseños.
+description: Guía reusable de dirección creativa de la agencia Studios.Bit para futuros proyectos de clientes: sitios web, branding, interfaces, motion, campañas, reels y diseño de contenidos, a partir de diez referencias seleccionadas. Adaptar cada técnica a la marca y el brief del cliente, sin copiar diseños.
 ---
 
-# Studios.Bit — Creative Direction v0.3
-**Fecha:** 2026-11-05. **Estado:** guía de diseño y contenido basada en nueve referencias, NO un modelo reentrenado.
+# Studios.Bit — Creative Direction v0.4
+**Fecha:** 2026-11-05. **Estado:** guía de diseño y contenido basada en diez referencias, NO un modelo reentrenado.
 
 ## 1. Propósito
 **Uso principal:** establecer un criterio creativo reutilizable para los proyectos que Studios.Bit desarrollará para sus clientes, no generar cambios automáticos en la web de Studios.Bit. Cada proyecto debe tener su propia dirección artística, identidad visual, objetivos, alcance y aprobación.
@@ -39,7 +39,7 @@ Equilibrar diferenciación visual, claridad, confianza, viabilidad comercial y g
 - Respetar prefers-reduced-motion, teclado, foco, tamaños táctiles y lectura sin JavaScript.
 - El sitio debe transmitir un nivel premium sin parecer una plantilla genérica de IA.
 
-## 5. Nueve referencias de diseño y contenido
+## 5. Diez referencias de diseño y contenido
 Consultar `references/REFERENCIAS.md` y, si están disponibles en la copia local, las imágenes `references/frames/`.
 
 | Código | Patrón que puede inspirar | Precaución |
@@ -53,6 +53,7 @@ Consultar `references/REFERENCIAS.md` y, si están disponibles en la copia local
 | SB-07 | Museo digital, tipografía monumental, escenas | Conservar legibilidad y evitar mareo |
 | SB-08 | Comparación de heroes con gancho y montaje | No copiar interfaces mostradas ni sacrificiar claridad |
 | SB-09 | Exploración inmobiliaria 3D con continuidad espacial | Evitar 3D pesado y afirmaciones no verificadas |
+| SB-10 | Portafolio narrativo con puertas, títulos cinéticos y trayectoria | Mantener orientación, rendimiento y originalidad |
 
 **No clonar:** técnicas y gramática visual sí; interfaz, marca, activos y animación exacta de terceros no.
 
@@ -67,7 +68,7 @@ Consultar `references/REFERENCIAS.md` y, si están disponibles en la copia local
 8. **Evidencia:** preview, capturas, trazas o video y reporte de lo probado; separar hechos de hipótesis.
 
 ## 7. Redes sociales
-**Regla nueva:** todos los videos SB-01 a SB-09 son también referencias para **estructuras de contenido**: gancho, composición, demostración visual, ritmo, transiciones, explicación y CTA. Consulta obligatoriamente `references/CONTENIDO_Y_FORMATOS.md` cuando se soliciten ideas, guiones, Reels, TikTok, Facebook o carruseles, y analiza cada video por lo que enseña sobre *comunicar*, no solo sobre cómo luce. No copiar clips de terceros; producir material propio o autorizado.
+**Regla nueva:** todos los videos SB-01 a SB-10 son también referencias para **estructuras de contenido**: gancho, composición, demostración visual, ritmo, transiciones, explicación y CTA. Consulta obligatoriamente `references/CONTENIDO_Y_FORMATOS.md` cuando se soliciten ideas, guiones, Reels, TikTok, Facebook o carruseles, y analiza cada video por lo que enseña sobre *comunicar*, no solo sobre cómo luce. No copiar clips de terceros; producir material propio o autorizado.
 Equilibrar contenido visual atractivo con criterio demostrable y educación. Series propuestas:
 - **Bit Audit:** tres hallazgos reales y propuesta de corrección, sin ridiculizar terceros.
 - **1 Bit de Diseño:** explicar una decisión visual y su implicación UX.
@@ -91,7 +92,7 @@ Umbral sugerido: **80/100**, con veto ante problemas críticos de accesibilidad,
 
 ## 9. Actualización continua
 Para nuevos videos:
-1. Asignar SB-10, SB-11...; registrar fuente, fecha y licencia si se conoce.
+1. Asignar SB-11, SB-12...; registrar fuente, fecha y licencia si se conoce.
    Analizar siempre **dos capas**: dirección de diseño/UX y formato de contenido (gancho, edición, narrativa, demostración, CTA).
 2. Analizar secuencia, ritmo, tipografía, composición, interacción, propósito y riesgos.
 3. Documentar qué funciona, por qué, dónde usarlo, cómo implementarlo y qué evitar.
