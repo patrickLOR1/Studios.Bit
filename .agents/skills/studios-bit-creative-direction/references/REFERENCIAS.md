@@ -1,5 +1,7 @@
-# Catálogo — diez referencias Studios.Bit
-**Origen:** diez grabaciones MP4 de publicaciones de terceros seleccionadas por el usuario; alta 2026-11-05. No son trabajos propios, ni demuestran conversión.
+# Catálogo — treinta referencias Studios.Bit
+**Origen:** diez referencias iniciales del 05-nov-2026 y veinte referencias adicionales del 06-nov-2026, procedentes de grabaciones MP4 de contenidos de terceros proporcionadas por el usuario. No son trabajos de Studios.Bit ni evidencia de conversión.
+
+**SB-11 a SB-30:** consultar [fichas completas del nuevo lote](LOTE_2026-11-06_SB11_SB30.md), con análisis de diseño, contenido y procesos.
 
 ## SB-01 — 10.15.03 | Portafolio tipo libro
 - **Observado:** portafolio que cambia como páginas y pliegos con retícula editorial oscura.
@@ -85,7 +87,7 @@
 
 ## Plantilla para nueva referencia
 ```md
-### SB-11 — [enlace/archivo] | [título]
+### SB-31 — [enlace/archivo] | [título]
 - Procedencia y fecha:
 - Objetivo de la referencia:
 - Uso para dirección de contenido (gancho, ritmo, narrativa, CTA):
