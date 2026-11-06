@@ -1,0 +1,47 @@
+
+## audit-static.mjs exit 0
+es Studios.Bit — Ideas que conectan https://www.studiosbit.org/es/ 5 FAQs noindex,nofollow
+en Studios.Bit — Ideas that connect https://www.studiosbit.org/en/ 5 FAQs noindex,nofollow
+
+## qa-build-config.mjs exit 0
+default PASS
+preview-guard PASS
+production-disabled PASS
+production-approved-simulation PASS
+Invalid HTTP origin and unapproved lead activation rejected. No live configuration changed.
+
+## qa.mjs exit 0
+320 px · ES/EN OK
+375 px · ES/EN OK
+390 px · ES/EN OK
+768 px · ES/EN OK
+1024 px · ES/EN OK
+1440 px · ES/EN OK
+1920 px · ES/EN OK
+
+## qa-lab.mjs exit 0
+Pricing, recommendation, bilingual state, proposal handoff and booking links passed.
+
+## qa-launch.mjs exit 0
+ES/EN: consent, validation, quote payload, duplicate lock, 422, network failure, success passed (intercepted endpoint).
+
+## qa-language-home.mjs exit 0
+390 es reduce PASS
+390 es no-preference PASS
+390 en reduce PASS
+390 en no-preference PASS
+1440 es reduce PASS
+1440 es no-preference PASS
+1440 en reduce PASS
+1440 en no-preference PASS
+
+## qa-navigation.mjs exit 0
+Six widths, ES/EN, section tracking, keyboard trap, Escape, CTA, reduced motion and resize passed.
+
+## qa-arrows.mjs exit 0
+ios-webkit es PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+ios-webkit en PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+android-chromium es PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+android-chromium en PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+desktop-chrome es PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+desktop-chrome en PASS { stroke: 'rgb(11, 11, 13)', width: 11 }

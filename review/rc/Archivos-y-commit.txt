@@ -1,0 +1,23 @@
+commit 8e680387f2f74cc4257aba3cc12884991de699bb
+Author:     Patrick Oleary <Polearyrosas@gmail.com>
+AuthorDate: Fri Nov 6 14:59:55 2026 -0600
+Commit:     Patrick Oleary <Polearyrosas@gmail.com>
+CommitDate: Fri Nov 6 14:59:55 2026 -0600
+
+    Prepare release candidate SEO metadata and minified static build
+
+ src/audit-static.mjs    |  4 ++++
+ src/build-locales.js    | 13 ++++++++-----
+ src/i18n.js             |  2 ++
+ src/index.html          |  8 ++++++--
+ src/prototype.js        |  2 +-
+ src/qa-build-config.mjs | 22 ++++++++++++++++++++++
+ src/qa-lab.mjs          |  1 +
+ src/qa-launch.mjs       |  9 ++++++---
+ src/qa-rc-security.mjs  | 11 +++++++++++
+ src/qa-rc-tour.mjs      | 17 +++++++++++++++++
+ src/qa-rc.mjs           |  8 ++++++++
+ src/qa.mjs              |  2 +-
+ src/scenes.js           |  4 ++--
+ vercel.json             | 23 ++++++++++++++++++++++-
+ 14 files changed, 111 insertions(+), 15 deletions(-)
