@@ -1,7 +1,7 @@
-# Estudios de contenido — Studios.Bit Creative Direction v0.3
+# Estudios de contenido — Studios.Bit Creative Direction v0.5
 
 ## Objetivo
-Usar **los diez videos SB-01 a SB-09** como referencias para dos entregables distintos: (a) dirección de diseño de futuros trabajos de clientes; (b) **guion, edición, motion, estructura narrativa y pedagogía** de contenido de Studios.Bit y, si lo aprueba cada cliente, de sus redes sociales.
+Usar **las treinta referencias SB-01 a SB-30** como referencias para dos entregables distintos: (a) dirección de diseño de futuros trabajos de clientes; (b) **guion, edición, motion, estructura narrativa y pedagogía** de contenido de Studios.Bit y, si lo aprueba cada cliente, de sus redes sociales.
 
 Estas referencias son materiales de terceros, no muestras del portafolio ni evidencia de clientes, facturación, conversiones o resultados de Studios.Bit. Extraer la **gramática de contenido**, nunca reproducir sus grabaciones, voz, música, marcas, personajes, logos ni composiciones literalmente. Los videos compartidos se revisaron visualmente; sin transcripción de audio verificada, no atribuir declaraciones habladas.
 
@@ -15,7 +15,7 @@ Estas referencias son materiales de terceros, no muestras del portafolio ni evid
 7. **Revisión:** revisar legibilidad sin audio, derechos, accesibilidad, ritmo y CTA. Publicar solo tras aprobación del canal/cliente.
 8. **Aprendizaje:** guardar gancho, formato, hipótesis y métricas comprobables de rendimiento; proponer ajustes sin atribuir causalidad a una sola publicación.
 
-## Qué aprendemos de cada video (9 referencias)
+## Qué aprendemos de cada video (30 referencias)
 | Referencia | Patrón de contenido | Pieza original recomendada |
 |---|---|---|
 | SB-01 | Mostrar un resultado editorial a través de una secuencia de páginas | Reel «Un portafolio también puede contar una historia», con demo propia |
@@ -28,6 +28,26 @@ Estas referencias son materiales de terceros, no muestras del portafolio ni evid
 | **SB-08** | Gancho crítico «deja de hacer heroes genéricos» → montaje rápido de ejemplos contrastantes → regreso al creador | Reel original «3 maneras de hacer que tu primera pantalla no parezca una plantilla»: composición editorial, bento, escena inmersiva; utilizar prototipos propios |
 | **SB-09** | Una afirmación comercial muy visible → demostración continua de una web inmobiliaria con exterior, plantas, interior y amenidades | Reel «Una web inmobiliaria que puedes explorar»: demo 3D propia y explicación de UX, sin repetir ni adoptar el supuesto precio de $3,350 como tarifa |
 | **SB-10** | Gancho sobre la personalidad del portafolio → demo de puertas, profesión cambiante, línea temporal y proyectos | Reel «Un portafolio también puede contar una historia»: prototipo original, recorrido visual y CTA educativo |
+
+## Nuevo lote SB-11 a SB-30: contenido y proceso
+
+Las veinte fichas del 06-nov están en `LOTE_2026-11-06_SB11_SB30.md`. Cada una contiene una aplicación concreta para un cliente y un formato original de contenido. Seleccionar por objetivo, no por popularidad del reel.
+
+| Códigos | Formatos originales sugeridos |
+|---|---|
+| SB-11–SB-13 | Demostración de portafolio, carta gastronómica animada y previsualización de servicios |
+| SB-14–SB-16 | Tutorial de capas de luz, comparativa de webs arquitectónicas y proceso creativo con IA |
+| SB-17–SB-20 | Detrás de cámaras técnico, microinteracciones, producto con video y evaluación de bibliotecas |
+| SB-21–SB-24 | Análisis de herramientas, Bit Audit responsable, explicación cromática y scroll-linked frames |
+| SB-25–SB-27 | Historia de marca, comparativa costo/rendimiento de efectos y metodología de skills en Codex |
+| SB-28–SB-30 | Controles útiles, showreel de conceptos propios y del brief a la demo original con IA |
+
+### Reglas específicas de contenido
+- Distinguir videos *demostrativos* de *tutoriales*, *opinión* y *prospección comercial*; el gancho, pruebas y CTA son diferentes.
+- No convertir consejos de captura de clientes de otros creadores en promesas ni automatizar spam.
+- Para demos: mostrar primero resultado propio y después mecanismo. Para educación: gancho → problema → regla aplicable → ejemplo → CTA.
+- Toda experiencia ficticia debe llevar rótulo **Proyecto conceptual**. No atribuirse los resultados de los referentes.
+- Evaluar música, voz y recursos con derechos propios; subtítulos legibles en dispositivos móviles, sin depender solo del audio.
 
 ## Fichas de guion (ideas para probar, no piezas aprobadas)
 
