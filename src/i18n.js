@@ -6,7 +6,7 @@ const copy = {
  '.decision-copy':['Si cuesta entender tu oferta o encontrar cómo contactarte, una visita puede terminar ahí. Diseñamos ese siguiente paso contigo: una consulta sobre un producto, una explicación clara de tus servicios o una conversación que continúa en redes.','When your offer or contact details are hard to find, a visit can end there. We design the next step with you: a product enquiry, a clear introduction to your services or a conversation that continues on social media.'],
  '.decision-link':['Descubre lo que tu negocio necesita ↗','Discover what your business needs ↗'],
  '.skip-link':['Saltar al contenido','Skip to content'],
- '#main-nav a':['Servicios|Estudio|Proceso|Contacto','Services|Studio|Process|Contact'],
+ '#main-nav a':['Estudio|Servicios|Proceso|Contacto','Studio|Services|Process|Contact'],
  '.nav-close':['Cerrar <span aria-hidden="true">×</span>','Close <span aria-hidden="true">×</span>'],
  '.nav-cta':['Iniciar proyecto ↗','Start a project ↗'],
  '.hero-kicker':['<span class="pulse"></span> CREATIVIDAD · DIGITAL · TECNOLOGÍA','<span class="pulse"></span> CREATIVE · DIGITAL · TECHNOLOGY'],

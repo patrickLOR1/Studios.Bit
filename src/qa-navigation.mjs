@@ -21,7 +21,7 @@ try{
  await page.screenshot({path:dir+'/desktop.png'});
  await page.locator('[data-lang=en]').click();
  await page.waitForTimeout(350);
- assert.equal(await nav.locator('a').first().getAttribute('aria-label'),'Services');
+ assert.equal(await nav.locator('a').first().getAttribute('aria-label'),'Studio');
  assert.equal(await page.locator('.nav-cta').getAttribute('href'),'#proyecto');
  for(const width of [1024,768,390,375,320]){
   await page.setViewportSize({width,height:820});
@@ -34,7 +34,7 @@ try{
     await page.waitForTimeout(850);
     await page.screenshot({path:dir+'/mobile-en.png'});
     await page.locator('[data-lang=es]').click();
-    assert.equal(await nav.locator('a').first().getAttribute('aria-label'),'Servicios');
+    assert.equal(await nav.locator('a').first().getAttribute('aria-label'),'Estudio');
     await page.waitForTimeout(700);
    }
    await page.keyboard.press('Escape');await dialog.waitFor({state:'hidden'});

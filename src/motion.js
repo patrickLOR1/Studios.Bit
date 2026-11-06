@@ -7,24 +7,16 @@ import {mountBand} from './poster.js';
 gsap.registerPlugin(ScrollTrigger);
 
 const chapters=[...document.querySelectorAll('.story-chapters a')];
-function chapter(index){
- chapters.forEach((link,i)=>i===index?link.setAttribute('aria-current','location'):link.removeAttribute('aria-current'));
-}
 function translateChapters(){
  const en=document.documentElement.lang==='en';
  const names=en?['Find the opportunity','Explore solutions','Build my project']:['Encontrar la oportunidad','Explorar soluciones','Construir mi proyecto'];
  chapters.forEach((link,i)=>link.querySelector('span').textContent=names[i]);
  document.querySelector('.story-chapters').setAttribute('aria-label',en?'Project journey':'Recorrido del proyecto');
 }
-let media, cleanupBand, navContext;
+let media, cleanupBand;
 function mount(){
  cleanupBand=mountBand();
- navContext=gsap.context(()=>{
-  ['.decision','.services','#proyecto'].forEach((trigger,i)=>ScrollTrigger.create({
-   trigger,start:'top 35%',onEnter:()=>chapter(i),onLeaveBack:()=>chapter(Math.max(0,i-1))
-  }));
- });
- chapter(0);translateChapters();
+ translateChapters();
  media=gsap.matchMedia();
  media.add({motion:'(prefers-reduced-motion: no-preference)',desktop:'(min-width: 901px) and (pointer: fine)'},context=>{
   if(!context.conditions.motion)return;
@@ -34,7 +26,7 @@ function mount(){
   const on=(target,event,listener,options)=>{target.addEventListener(event,listener,options);disposers.push(()=>target.removeEventListener(event,listener,options))};
   let lenis,tick;
   if(interactive){
-   lenis=new Lenis({smoothWheel:true,syncTouch:false,anchors:false,duration:.85});
+   lenis=new Lenis({smoothWheel:true,syncTouch:false,anchors:false,lerp:.38});
    window.studiosScroll.setEngine(lenis);
    lenis.on('scroll',ScrollTrigger.update);
    tick=time=>lenis.raf(time*1000);
@@ -112,7 +104,7 @@ function mount(){
   };
  });
 }
-function unmount(){media?.revert();navContext?.revert();cleanupBand?.()}
+function unmount(){media?.revert();cleanupBand?.()}
 let refreshTimer;
 function refresh(){
  clearTimeout(refreshTimer);

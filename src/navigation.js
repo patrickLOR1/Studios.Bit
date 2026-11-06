@@ -9,13 +9,16 @@ const cta=header.querySelector('.nav-cta');
 const mobile=matchMedia('(max-width:900px)');
 const reduced=matchMedia('(prefers-reduced-motion:reduce)');
 const links=[...nav.querySelectorAll('a')];
-const sections=links.map(link=>({link,target:document.querySelector(link.hash)}))
- .sort((a,b)=>a.target.offsetTop-b.target.offsetTop);
+function collectSections(items){
+ return items.map(link=>({link,target:document.querySelector(link.hash)}));
+}
+const sections=collectSections(links);
+const chapters=collectSections([...document.querySelectorAll('.story-chapters a')]);
 const marker=document.createElement('i');
 marker.className='nav-marker';
 marker.setAttribute('aria-hidden','true');
 nav.append(marker);
-let active,preview,closeAnimation,scrollFrame;
+let active=null,activeChapter=null,closeAnimation,scrollFrame;
 function labels(){
  links.forEach(link=>{
   const name=link.textContent;link.setAttribute('aria-label',name);
@@ -30,41 +33,50 @@ function labels(){
 }
 function position(instant=false){
  if(mobile.matches)return;
- const link=preview||active;
- if(!link)return;
- const props={x:link.offsetLeft+12,scaleX:Math.max(1,link.offsetWidth-24)};
+ const props=active
+  ? {opacity:1,x:active.offsetLeft+12,scaleX:Math.max(1,active.offsetWidth-24)}
+  : {opacity:0};
  if(instant||reduced.matches){gsap.killTweensOf(marker);gsap.set(marker,props)}
- else gsap.to(marker,{...props,duration:.36,ease:'power3.out',overwrite:true});
+ else gsap.to(marker,{...props,duration:.22,ease:'power3.out',overwrite:true});
 }
 function select(link){
  if(active===link)return;
- preview=null;active=link;
+ active=link;
  links.forEach(el=>el===link?el.setAttribute('aria-current','location'):el.removeAttribute('aria-current'));
  position();
 }
 let activationLine=0;
 function measureSections(){
  activationLine=window.studiosScroll.inset()+Math.min(innerHeight*.12,90);
- for(const section of sections)section.top=scrollY+section.target.getBoundingClientRect().top;
+ for(const section of [...sections,...chapters])section.top=window.studiosScroll.layoutTop(section.target);
  scrollUpdate();
 }
 const geometry=new ResizeObserver(measureSections);
 document.querySelectorAll('main>section,main>.story-chapters,.nav').forEach(el=>geometry.observe(el));
+// Keep the last active item across tiny reversals on the boundary.
+function reached(items,previous,line){
+ let result=null;
+ for(const item of items){
+  if(item.top <= line+(item.link===previous?6:0))result=item.link;
+ }
+ return result;
+}
 function readScroll(){
  scrollFrame=0;
  header.classList.toggle('floating',scrollY>32);
  const line=scrollY+activationLine;
- let current=sections[0];
- for(const section of sections)if(section.top<=line)current=section;
- select(current.link);
+ select(reached(sections,active,line));
+ const next=reached(chapters,activeChapter,line);
+ if(next!==activeChapter){
+  activeChapter=next;
+  for(const {link} of chapters){
+   if(link===next)link.setAttribute('aria-current','location');
+   else link.removeAttribute('aria-current');
+  }
+ }
 }
 function scrollUpdate(){if(!scrollFrame)scrollFrame=requestAnimationFrame(readScroll)}
 links.forEach(link=>{
- const enter=()=>{preview=link;position()};
- const leave=()=>{preview=null;position()};
- link.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')enter()});
- link.addEventListener('pointerleave',leave);
- link.addEventListener('focus',enter);link.addEventListener('blur',leave);
  link.addEventListener('pointermove',e=>{
   if(mobile.matches||reduced.matches||e.pointerType!=='mouse')return;
   const r=link.getBoundingClientRect();
@@ -80,7 +92,7 @@ function restore(){
  document.documentElement.classList.remove('nav-locked');
  dialog.classList.remove('leaving');
  closeAnimation=null;
- preview=null;position(true);
+ position(true);
 }
 function openMenu(){
  if(!mobile.matches||dialog.open)return;
