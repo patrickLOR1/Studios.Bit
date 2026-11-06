@@ -13,6 +13,9 @@ for(const lang of ['es','en']){
  assert.equal(attr('meta[property="og:title"]','content'),document.title);
  assert.ok(attr('meta[name=description]','content'));
  assert.ok(attr('meta[name="twitter:card"]','content'));
+ assert.equal(attr('meta[name="twitter:title"]','content'),document.title);
+ assert.equal(attr('meta[name="twitter:description"]','content'),attr('meta[name=description]','content'));
+ assert.equal(attr('link[hreflang=x-default]','href'),new URL('/',canonical).href);
  for(const locale of ['es','en']) {
   const target=attr('link[hreflang='+locale+']','href');
   assert.equal(target,new URL('/'+locale+'/',canonical).href);
@@ -26,6 +29,7 @@ for(const lang of ['es','en']){
  }
  const entities=JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
  assert.equal(entities.filter(e=>e['@type']==='Organization').length,1);
+ assert.equal(entities.filter(e=>e['@type']==='WebSite').length,1);
  assert.deepEqual(entities.filter(e=>e['@type']==='Service').map(e=>e.name),[...document.querySelectorAll('.service h2')].map(el=>el.textContent));
  const questions=[...document.querySelectorAll('#proyecto details')];
  assert.ok(questions.length>=5 && questions.every(el=>el.querySelector('summary') && el.querySelector('p')?.textContent));

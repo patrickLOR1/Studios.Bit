@@ -80,6 +80,8 @@ function setLanguage(lang) {
  document.querySelector('meta[name=description]').content=description;
  document.querySelector('meta[property="og:description"]').content=description;
  document.querySelector('meta[property="og:title"]').content=document.title;
+ document.querySelector('meta[name="twitter:title"]').content=document.title;
+ document.querySelector('meta[name="twitter:description"]').content=description;
  document.querySelector('meta[property="og:locale"]').content=n?'en_US':'es_MX';
  const url=document.querySelector('link[hreflang="'+lang+'"]').getAttribute('href');
  document.querySelector('link[rel=canonical]').href=url;

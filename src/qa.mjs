@@ -9,7 +9,7 @@ const browser = await chromium.launch({
 const origin = process.env.PREVIEW_URL || 'http://127.0.0.1:4294';
 await mkdir('review', { recursive: true });
 try {
-  for (const width of [320,375,390,768,1024,1440]) {
+  for (const width of [320,375,390,768,1024,1440,1920]) {
     const page = await browser.newPage({viewport:{width,height:width<600?844:960}});
     const errors=[];
     page.on('pageerror',error=>errors.push(error.message));

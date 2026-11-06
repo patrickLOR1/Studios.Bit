@@ -1,9 +1,12 @@
-import {readFile,mkdir,writeFile,copyFile,cp} from 'node:fs/promises';
+import {transform} from 'esbuild';
+import {readFile,mkdir,writeFile,cp} from 'node:fs/promises';
 import {renderTransformation,renderBridge,renderClosing,renderServiceArt} from './scenes.js';
 import vm from 'node:vm';
 import {parseHTML} from 'linkedom';
 import {renderLab,renderBook} from './experience.js';
-const origin=new URL(process.env.SITE_URL || 'https://www.studiosbit.org').origin;
+const siteURL=new URL(process.env.SITE_URL || 'https://www.studiosbit.org');
+if(siteURL.protocol!=='https:')throw Error('SITE_URL must use HTTPS');
+const origin=siteURL.origin;
 const production=process.env.SITE_ENV==='production' && (!process.env.VERCEL_ENV || process.env.VERCEL_ENV==='production');
 if(production && origin!=='https://www.studiosbit.org')throw Error('Production requires explicit HTTPS SITE_URL');
 const indexable=production && process.env.SITE_INDEXABLE==='true';
@@ -17,9 +20,9 @@ const template=(await readFile('src/index.html','utf8'))
  .replace('{{ROBOTS}}',indexable?'index,follow':'noindex,nofollow');
 await mkdir('dist',{recursive:true});
 await writeFile('dist/launch-config.js','window.studiosLaunch='+JSON.stringify({leadEnabled,privacyUrl,privacyVersion,origin})+';');
-await copyFile('src/launch.js','dist/launch.js');
+await writeFile('dist/launch.js',(await transform(await readFile('src/launch.js','utf8'),{loader:'js',minify:true})).code);
 await cp('src/assets','dist/assets',{recursive:true});
-for(const file of ['scroll.js','script.js','styles.css','refinements.css','i18n.js','experience.js','pricing.js','project.css','immersive.css','navigation.css','prototype.js']) await copyFile('src/'+file,'dist/'+file);
+for(const file of ['scroll.js','script.js','styles.css','refinements.css','i18n.js','experience.js','pricing.js','project.css','immersive.css','navigation.css','prototype.js']) await writeFile('dist/'+file,(await transform(await readFile('src/'+file,'utf8'),{loader:file.endsWith('.css')?'css':'js',minify:true})).code);
 const script=await readFile('src/i18n.js','utf8');
 await writeFile('dist/sitemap.xml','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+['es','en'].map(lang=>'<url><loc>'+origin+'/'+lang+'/</loc></url>').join('')+'</urlset>');
 await writeFile('dist/robots.txt',indexable?'User-agent: *\nAllow: /\nSitemap: '+origin+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
@@ -55,7 +58,7 @@ for(const lang of ['es','en']) {
    '@type':'Service',name:title.textContent,provider:{'@id':organization['@id']},
    url:origin+'/'+lang+'/#servicios'
  }));
- schema.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[organization,...services]});
+ schema.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[organization,{'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'Studios.Bit',inLanguage:['es','en'],publisher:{'@id':organization['@id']}},...services]});
  for(const selector of ['.hero-bottom>div','.services','.contact-copy','footer','.closing [data-book]']){
    const target=document.querySelector(selector);
    const slot=target.hasAttribute('data-book')?target:document.createElement('div');

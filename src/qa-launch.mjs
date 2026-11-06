@@ -27,17 +27,20 @@ try {
   await page.locator('#service').selectOption({index:1});
   await send.click();assert.equal(count,0);
   await consent.check();
-  for(mode of ['invalid','offline','success']){
+  await page.locator('#email').fill('not-an-email');
+  await send.click();assert.equal(count,0);
+  await page.locator('#email').fill('qa@example.test');
+  for(mode of ['invalid','offline','unknown','success']){
    const previous=count;
    await send.evaluate(b=>{b.click();b.click()});
    await page.waitForFunction(()=>!document.querySelector('[data-consent]').closest('div').querySelector('button').disabled);
    assert.equal(count,previous+1);
    assert.equal(await page.locator('#name').inputValue(),'QA');
    const msg=await status.innerText();
-   assert.match(msg,mode==='success'?/recibió|received/:mode==='offline'?/confirm/:/rechaz|reject/);
+   assert.match(msg,mode==='success'?/recibió|received/:(mode==='offline'||mode==='unknown')?/confirm/:/rechaz|reject/);
   }
   assert.equal(body.language,lang);assert.ok(body.project_summary);assert.equal(typeof body.estimated_once_mxn,'number');
-  assert.equal(body.company,'QA');assert.ok(body.scope);
+  assert.equal(body.company,'QA');assert.ok(body.scope);assert.equal(body.consent,true);assert.ok(body.goal);assert.equal(typeof body.estimated_monthly_mxn,'number');
   await page.close();
  }
  console.log('ES/EN: consent, validation, quote payload, duplicate lock, 422, network failure, success passed (intercepted endpoint).');

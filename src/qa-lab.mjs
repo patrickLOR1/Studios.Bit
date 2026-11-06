@@ -39,6 +39,7 @@ try{
    await page.screenshot({path:'review/project-'+width+'-'+lang+'.png'});
    if(width<900) await page.locator('.menu-toggle').click();
    await page.locator('[data-lang='+ (lang==='en'?'es':'en')+']').click();
+   if(width<900){await page.keyboard.press('Escape');await page.locator('#navigation-dialog').waitFor({state:'hidden'});}
    assert.equal(await field('web').inputValue(),'corporate');
    assert.ok(await field('bilingual').isChecked());
    assert.equal(await field('goal').inputValue(),'community');
