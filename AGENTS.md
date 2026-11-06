@@ -9,6 +9,7 @@
 - Optimizar la fluidez: evitar retrasos del scroll, tirones, superposiciones de barras sticky y texto cortado; coordinar Lenis, GSAP, ScrollTrigger y anclas.
 - No alterar precios, paquetes, cotizador, formularios, Formspree, Setmore, consentimiento, dominios o SEO/AEO sin autorización explícita.
 - No copiar diseños, marcas, assets ni animaciones de terceros. Marcar demostraciones como «Proyecto conceptual».
+- La biblioteca ahora contiene **SB-01 a SB-30**. Para elegir una referencia de los últimos 20 videos consulta también `.agents/skills/studios-bit-creative-direction/references/LOTE_2026-11-06_SB11_SB30.md`. Las fichas son observaciones visuales y no prueban el audio, precios o métricas de creadores.
 - Para tareas de **contenido** (guiones, reels, TikTok, Facebook, carruseles, demostraciones) consulta también `.agents/skills/studios-bit-creative-direction/references/CONTENIDO_Y_FORMATOS.md`. Cada video es referencia tanto de diseño como de narrativa, montaje, gancho y CTA; no copiar material audiovisual ajeno.
 - Usar máximo dos referencias SB-xx principales por propuesta, documentar el criterio y ejecutar pruebas reales antes de reportar éxito.
 - Trabajar en rama de revisión; no modificar main ni desplegar a producción sin aprobación.
@@ -17,5 +18,6 @@
 - Skill: `.agents/skills/studios-bit-creative-direction/SKILL.md`
 - Catálogo: `.agents/skills/studios-bit-creative-direction/references/REFERENCIAS.md`
 - Guía de contenido: `.agents/skills/studios-bit-creative-direction/references/CONTENIDO_Y_FORMATOS.md`
+- SB-11 a SB-30: `.agents/skills/studios-bit-creative-direction/references/LOTE_2026-11-06_SB11_SB30.md`
 - Backlog: `.agents/skills/studios-bit-creative-direction/references/OPORTUNIDADES_SITIO.md`
 - Historial: `.agents/skills/studios-bit-creative-direction/references/CHANGELOG.md`
