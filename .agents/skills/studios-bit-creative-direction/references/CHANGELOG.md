@@ -1,5 +1,14 @@
 # Evolución de la skill
 
+## v0.5 — Veinte referencias: diseño, contenido y procesos (2026-11-06)
+- Registradas SB-11 a SB-30 desde veinte videos verticales compartidos por el usuario.
+- Añadido catálogo por referencia con observaciones visuales, usos en futuros proyectos, aplicaciones editoriales, límites técnicos y de propiedad intelectual.
+- Separadas referencias de diseño y motion de vídeos de herramientas, método y prospección.
+- Actualizada la guía de Reels/TikTok/Facebook; cada referencia contempla idea, secuencia, demostración propia y CTA.
+- Se revisaron seis fotogramas por grabación; audio no transcrito ni verificado. No interpretar cifras publicadas por terceros como resultados propios.
+- Los MP4 originales siguen fuera del repositorio GitHub público; no se alteró el sitio, el cotizador ni producción.
+
+
 ## v0.4 — SB-10: portafolio narrativo (2026-11-05)
 - Agregada una décima referencia desde el nuevo video: puertas metafóricas, alternancia de perfiles profesionales, timeline y presentación de proyectos.
 - Análisis dual: patrón de diseño e idea original de Reel/carrusel para contenidos de Studios.Bit y proyectos de clientes.
