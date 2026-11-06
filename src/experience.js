@@ -28,7 +28,7 @@ const content=(lang,s)=> {
  <div class="lab-grid"><div><section data-panel="0"><h3>01 / ${t('Encuentra tu punto de partida','Find your starting point')}</h3>
  ${select('goal',t('Mi objetivo principal','My primary goal'),[['leads',t('Generar consultas','Generate enquiries')],['catalog',t('Explicar varios servicios','Explain several services')],['community',t('Mantener una comunidad','Engage my community')]])}
  ${select('presence',t('Presencia actual','Current presence'),[['none',t('Empiezo desde cero','Starting from scratch')],['existing',t('Ya tengo canales activos','Existing channels')]])}
- <div class="concept"><small>${t('PROYECTO CONCEPTUAL','CONCEPT PROJECT')}</small><h4>${services[recommendation]}</h4><b>${t('Tu oferta','Your offer')} → ${t('Contexto','Context')} → ${t('Conversación','Conversation')}</b><p>${reason} ${s.presence==='existing'?t('Partiríamos de una revisión de tus canales actuales.','We would first review your existing channels.'):t('Empezaríamos definiendo tu oferta y audiencia.','We would start by defining your offer and audience.')}</p><button type="button" data-action="apply">${t('Usar esta recomendación','Use this recommendation')} ↗</button></div>
+ <div class="concept"><small>${t('PROYECTO CONCEPTUAL','CONCEPT PROJECT')}</small><h4>${services[recommendation]}</h4><b>${t('Tu oferta','Your offer')} → ${t('Contexto','Context')} → ${t('Conversación','Conversation')}</b><p>${reason} ${s.presence==='existing'?t('Partiríamos de una revisión de tus canales actuales.','We would first review your existing channels.'):t('Empezaríamos definiendo tu oferta y audiencia.','We would start by defining your offer and audience.')}</p><button type="button" data-action="apply">${t('Usar esta recomendación','Use this recommendation')} <svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></button></div>
  </section><section data-panel="1"><h3>02 / ${t('Define el alcance','Shape the scope')}</h3>
  ${select('web',t('Desarrollo web','Web development'),[['none',t('Sin desarrollo web','No website')],['landing',services.landing],['corporate',services.corporate]])}
  ${s.web!=='none'?`<p>${webScope} ${t('Diseño adaptable, SEO técnico básico, contacto acordado y dos rondas de revisión. El enlace a Setmore puede incluirse.','Responsive design, basic technical SEO, agreed contact integration and two revision rounds. A Setmore link can be included.')}</p>
@@ -37,13 +37,13 @@ const content=(lang,s)=> {
  ${select('plan',t('Gestión mensual de redes','Monthly social media'),[['none',t('Sin plan mensual','No monthly plan')],...Object.entries(plans).map(([k,v])=>[k,v.split(' · ')[0]])])}
  <p>${plans[s.plan]||''}</p></section></div>
  <aside><small>03 / ${t('INVERSIÓN ESTIMADA','ESTIMATED INVESTMENT')}</small><dl>${rows.filter(x=>x[1]).map(([label,n])=>'<div><dt>'+label+'</dt><dd>'+money(n)+'</dd></div>').join('')}</dl><p>${t('Subtotal · pago único','Subtotal · one-time')}</p><strong>${money(q.once)}</strong><p>${t('Subtotal · mensualidad','Subtotal · monthly')}</p><strong>${money(q.monthly)}</strong><dl><div><dt>IVA</dt><dd>${t('Por confirmar','To be confirmed')}</dd></div></dl><p>${notice}</p>
- <h3>04 / ${t('Siguiente paso','Next step')}</h3><button type="button" data-action="proposal">${t('Solicitar propuesta personalizada','Request a tailored proposal')} ↗</button><button type="button" data-action="copy">${t('Copiar mi estimación','Copy my estimate')}</button>${book}<p role="status" id="lab-status"></p></aside></div>
+ <h3>04 / ${t('Siguiente paso','Next step')}</h3><button type="button" data-action="proposal">${t('Solicitar propuesta personalizada','Request a tailored proposal')} <svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></button><button type="button" data-action="copy">${t('Copiar mi estimación','Copy my estimate')}</button>${book}<p role="status" id="lab-status"></p></aside></div>
  <h3>${t('Antes de empezar','Before you start')}</h3>${faqs.map(([q,a])=>'<details><summary>'+q+'</summary><p>'+a+'</p></details>').join('')}</div>`};
 };
 export function renderLab(lang){return content(lang,initial).html;}
 export function renderBook(lang){
  const label=lang==='en'?'Book a free web consultation':'Agendar asesoría gratuita';
- return '<a class="book-link" target="_blank" rel="noopener noreferrer" href="'+booking+'">'+label+' ↗</a>';
+ return '<a class="book-link" target="_blank" rel="noopener noreferrer" href="'+booking+'">'+label+' <svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></a>';
 }
 const drawings={
  leads:'<rect x="16" y="16" width="78" height="7"/><rect x="16" y="34" width="144" height="5"/><rect x="16" y="52" width="64" height="17" fill="currentColor"/><circle cx="202" cy="43" r="26" fill="currentColor"/>',
@@ -89,7 +89,7 @@ if(typeof document!=='undefined'){
    }
   }
 
-  lab.querySelector('[data-panel="1"]').insertAdjacentHTML('beforeend','<div class="scope-art">'+renderPrototype(state,lang)+'</div><button type="button" data-step="2">'+(en?'Review my project':'Revisar mi proyecto')+' ↗</button>');
+  lab.querySelector('[data-panel="1"]').insertAdjacentHTML('beforeend','<div class="scope-art">'+renderPrototype(state,lang)+'</div><button type="button" data-step="2">'+(en?'Review my project':'Revisar mi proyecto')+' <svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></button>');
   const caption=document.createElement('p');
   caption.className='scope-caption';
   const describeScope=()=>{

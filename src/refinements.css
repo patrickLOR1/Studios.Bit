@@ -45,3 +45,6 @@
  .service-select span{display:inline-block;transition:transform .24s ease-out}
  .service-select:is(:focus-visible,:hover) span{transform:translate(3px,-3px)}
 }
+
+/* Decorative vectors never depend on platform emoji fonts. */
+.icon-arrow{display:inline-block;width:1em;height:1em;vertical-align:-.125em;flex-shrink:0;pointer-events:none;color:inherit}
