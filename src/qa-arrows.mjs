@@ -16,6 +16,8 @@ await p.waitForTimeout(150);
 assert.equal(await p.locator('body').evaluate(el=>el.textContent.includes('↗')),false);
 assert.equal(await p.locator('svg.icon-arrow:not([aria-hidden="true"])').count(),0);
 assert.ok(await p.locator('svg.icon-arrow').count()>10);
+const sizes=await p.locator('button svg.icon-arrow:visible,a svg.icon-arrow:visible').evaluateAll(els=>els.map(e=>({width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height})));
+assert.ok(sizes.every(s=>s.width<=32&&s.height<=32),'Decorative arrows must stay icon-sized');
 }
 }
 await p.evaluate(()=>window.studiosScroll.navigate(document.querySelector('#inicio')));

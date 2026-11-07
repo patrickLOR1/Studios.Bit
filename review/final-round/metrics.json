@@ -1,0 +1,314 @@
+[
+  {
+    "phase": "before",
+    "run": 1,
+    "date": "2026-11-06T21:22:32.032Z",
+    "lighthouse": "13.6.0",
+    "score": 82,
+    "TBT": 330,
+    "LCP": 1623.4609637964218,
+    "CLS": 0.00987695442515373,
+    "accessibility": 100,
+    "seo": 69,
+    "mainThread": [
+      {
+        "group": "styleLayout",
+        "groupLabel": "Style & Layout",
+        "duration": 1914.5480000000002
+      },
+      {
+        "group": "scriptEvaluation",
+        "groupLabel": "Script Evaluation",
+        "duration": 656.6599999999997
+      },
+      {
+        "group": "other",
+        "groupLabel": "Other",
+        "duration": 649.1279999999949
+      },
+      {
+        "group": "paintCompositeRender",
+        "groupLabel": "Rendering",
+        "duration": 209.1599999999984
+      },
+      {
+        "group": "parseHTML",
+        "groupLabel": "Parse HTML & CSS",
+        "duration": 58.37199999999994
+      },
+      {
+        "group": "scriptParseCompile",
+        "groupLabel": "Script Parsing & Compilation",
+        "duration": 26.751999999999995
+      }
+    ],
+    "settings": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    }
+  },
+  {
+    "phase": "before",
+    "run": 2,
+    "date": "2026-11-06T21:23:03.808Z",
+    "lighthouse": "13.6.0",
+    "score": 81,
+    "TBT": 709.8163916103474,
+    "LCP": 1572.8034335586094,
+    "CLS": 0.00987695442515373,
+    "accessibility": 100,
+    "seo": 69,
+    "mainThread": [
+      {
+        "group": "styleLayout",
+        "groupLabel": "Style & Layout",
+        "duration": 1868.488
+      },
+      {
+        "group": "scriptEvaluation",
+        "groupLabel": "Script Evaluation",
+        "duration": 683.3959999999967
+      },
+      {
+        "group": "other",
+        "groupLabel": "Other",
+        "duration": 621.407999999996
+      },
+      {
+        "group": "paintCompositeRender",
+        "groupLabel": "Rendering",
+        "duration": 199.30799999999843
+      },
+      {
+        "group": "parseHTML",
+        "groupLabel": "Parse HTML & CSS",
+        "duration": 62.631999999999906
+      },
+      {
+        "group": "scriptParseCompile",
+        "groupLabel": "Script Parsing & Compilation",
+        "duration": 24.728
+      }
+    ],
+    "settings": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    }
+  },
+  {
+    "phase": "before",
+    "run": 3,
+    "date": "2026-11-06T21:23:28.886Z",
+    "lighthouse": "13.6.0",
+    "score": 79,
+    "TBT": 788.7349812315956,
+    "LCP": 1590.2464812315952,
+    "CLS": 0.00987695442515373,
+    "accessibility": 100,
+    "seo": 69,
+    "mainThread": [
+      {
+        "group": "styleLayout",
+        "groupLabel": "Style & Layout",
+        "duration": 2004.1239999999984
+      },
+      {
+        "group": "scriptEvaluation",
+        "groupLabel": "Script Evaluation",
+        "duration": 869.6199999999935
+      },
+      {
+        "group": "other",
+        "groupLabel": "Other",
+        "duration": 777.1839999999983
+      },
+      {
+        "group": "paintCompositeRender",
+        "groupLabel": "Rendering",
+        "duration": 319.0960000000012
+      },
+      {
+        "group": "parseHTML",
+        "groupLabel": "Parse HTML & CSS",
+        "duration": 66.81199999999993
+      },
+      {
+        "group": "scriptParseCompile",
+        "groupLabel": "Script Parsing & Compilation",
+        "duration": 27.203999999999994
+      }
+    ],
+    "settings": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    }
+  },
+  {
+    "phase": "after",
+    "run": 1,
+    "date": "2026-11-07T20:25:08.791Z",
+    "lighthouse": "13.6.0",
+    "score": 83,
+    "TBT": 613.799113046261,
+    "LCP": 1637.1325478149552,
+    "CLS": 0.009901554349432257,
+    "accessibility": 100,
+    "seo": 69,
+    "mainThread": [
+      {
+        "group": "styleLayout",
+        "groupLabel": "Style & Layout",
+        "duration": 1893.2960000000005
+      },
+      {
+        "group": "other",
+        "groupLabel": "Other",
+        "duration": 839.3319999999947
+      },
+      {
+        "group": "scriptEvaluation",
+        "groupLabel": "Script Evaluation",
+        "duration": 806.8119999999959
+      },
+      {
+        "group": "paintCompositeRender",
+        "groupLabel": "Rendering",
+        "duration": 338.6280000000017
+      },
+      {
+        "group": "parseHTML",
+        "groupLabel": "Parse HTML & CSS",
+        "duration": 87.2879999999999
+      },
+      {
+        "group": "scriptParseCompile",
+        "groupLabel": "Script Parsing & Compilation",
+        "duration": 22.479999999999997
+      }
+    ],
+    "settings": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    }
+  },
+  {
+    "phase": "after",
+    "run": 2,
+    "date": "2026-11-07T20:25:35.567Z",
+    "lighthouse": "13.6.0",
+    "score": 83,
+    "TBT": 547.3041162902039,
+    "LCP": 1617.7700348391872,
+    "CLS": 0,
+    "accessibility": 100,
+    "seo": 69,
+    "mainThread": [
+      {
+        "group": "styleLayout",
+        "groupLabel": "Style & Layout",
+        "duration": 1814.5679999999995
+      },
+      {
+        "group": "other",
+        "groupLabel": "Other",
+        "duration": 852.7679999999965
+      },
+      {
+        "group": "scriptEvaluation",
+        "groupLabel": "Script Evaluation",
+        "duration": 749.4959999999955
+      },
+      {
+        "group": "paintCompositeRender",
+        "groupLabel": "Rendering",
+        "duration": 276.95599999999934
+      },
+      {
+        "group": "parseHTML",
+        "groupLabel": "Parse HTML & CSS",
+        "duration": 66.50399999999999
+      },
+      {
+        "group": "scriptParseCompile",
+        "groupLabel": "Script Parsing & Compilation",
+        "duration": 31.359999999999992
+      }
+    ],
+    "settings": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    }
+  },
+  {
+    "phase": "after",
+    "run": 3,
+    "date": "2026-11-07T20:26:01.836Z",
+    "lighthouse": "13.6.0",
+    "score": 80,
+    "TBT": 666.9652689092486,
+    "LCP": 1621.5682689092482,
+    "CLS": 0,
+    "accessibility": 100,
+    "seo": 69,
+    "mainThread": [
+      {
+        "group": "styleLayout",
+        "groupLabel": "Style & Layout",
+        "duration": 2029.236
+      },
+      {
+        "group": "other",
+        "groupLabel": "Other",
+        "duration": 821.6639999999978
+      },
+      {
+        "group": "scriptEvaluation",
+        "groupLabel": "Script Evaluation",
+        "duration": 735.9519999999964
+      },
+      {
+        "group": "paintCompositeRender",
+        "groupLabel": "Rendering",
+        "duration": 261.68399999999855
+      },
+      {
+        "group": "parseHTML",
+        "groupLabel": "Parse HTML & CSS",
+        "duration": 71.05200000000004
+      },
+      {
+        "group": "scriptParseCompile",
+        "groupLabel": "Script Parsing & Compilation",
+        "duration": 20.263999999999996
+      }
+    ],
+    "settings": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    }
+  }
+]

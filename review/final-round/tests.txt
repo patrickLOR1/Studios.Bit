@@ -1,0 +1,162 @@
+
+## audit-static.mjs exit 0
+es Studios.Bit — Ideas que conectan https://www.studiosbit.org/es/ 5 FAQs noindex,nofollow
+en Studios.Bit — Ideas that connect https://www.studiosbit.org/en/ 5 FAQs noindex,nofollow
+
+## qa-build-config.mjs exit 0
+default PASS
+preview-guard PASS
+production-disabled PASS
+production-approved-simulation PASS
+Invalid HTTP origin and unapproved lead activation rejected. No live configuration changed.
+
+## qa.mjs exit 0
+320 px · ES/EN OK
+375 px · ES/EN OK
+390 px · ES/EN OK
+768 px · ES/EN OK
+1024 px · ES/EN OK
+1440 px · ES/EN OK
+1920 px · ES/EN OK
+
+## qa-lab.mjs exit 0
+Pricing, recommendation, bilingual state, proposal handoff and booking links passed.
+
+## qa-launch.mjs exit 0
+ES/EN: consent, validation, quote payload, duplicate lock, 422, network failure, success passed (intercepted endpoint).
+
+## qa-language-home.mjs exit 0
+390 es reduce PASS
+390 es no-preference PASS
+390 en reduce PASS
+390 en no-preference PASS
+1440 es reduce PASS
+1440 es no-preference PASS
+1440 en reduce PASS
+1440 en no-preference PASS
+
+## qa-navigation.mjs exit 0
+Six widths, ES/EN, section tracking, keyboard trap, Escape, CTA, reduced motion and resize passed.
+
+## qa-arrows.mjs exit 0
+ios-webkit es PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+ios-webkit en PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+android-chromium es PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+android-chromium en PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+desktop-chrome es PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+desktop-chrome en PASS { stroke: 'rgb(11, 11, 13)', width: 11 }
+
+## qa-poster.mjs exit 0
+Band: 12 layouts, reduced motion, pause, accessible single copy and no-JS HTML passed.
+
+## qa-header-glow.mjs exit 0
+1440 ES/EN passed
+1920 ES/EN passed
+1024 ES/EN passed
+768 ES/EN passed
+390 ES/EN passed
+375 ES/EN passed
+
+## qa-final-cold.mjs exit 0
+[
+  {
+    width: 390,
+    lang: 'es',
+    background: { html: 'rgb(11, 11, 13)', body: 'rgb(11, 11, 13)' },
+    errors: [],
+    lazyScenes: 'visited',
+    reducedMotion: 'toggled',
+    physicalDevice: false
+  },
+  {
+    width: 390,
+    lang: 'en',
+    background: { html: 'rgb(11, 11, 13)', body: 'rgb(11, 11, 13)' },
+    errors: [],
+    lazyScenes: 'visited',
+    reducedMotion: 'toggled',
+    physicalDevice: false
+  },
+  {
+    width: 1440,
+    lang: 'es',
+    background: { html: 'rgb(11, 11, 13)', body: 'rgb(11, 11, 13)' },
+    errors: [],
+    lazyScenes: 'visited',
+    reducedMotion: 'toggled',
+    physicalDevice: false
+  },
+  {
+    width: 1440,
+    lang: 'en',
+    background: { html: 'rgb(11, 11, 13)', body: 'rgb(11, 11, 13)' },
+    errors: [],
+    lazyScenes: 'visited',
+    reducedMotion: 'toggled',
+    physicalDevice: false
+  }
+]
+
+## Final SVG rule regression: qa.mjs exit 0
+320 px · ES/EN OK
+375 px · ES/EN OK
+390 px · ES/EN OK
+768 px · ES/EN OK
+1024 px · ES/EN OK
+1440 px · ES/EN OK
+1920 px · ES/EN OK
+
+## Final SVG size regression: qa-arrows.mjs exit 0
+WebKit iPhone 13 emulation ES/EN, Chromium Pixel 7 emulation ES/EN, Chrome desktop ES/EN: decorative button/link arrows <=32px across all estimator steps; SVG aria-hidden and no Unicode diagonal arrow passed.
+
+## Final SVG rule regression: qa-language-home.mjs exit 0
+390 es reduce PASS
+390 es no-preference PASS
+390 en reduce PASS
+390 en no-preference PASS
+1440 es reduce PASS
+1440 es no-preference PASS
+1440 en reduce PASS
+1440 en no-preference PASS
+
+## Final SVG rule regression: qa-final-cold.mjs exit 0
+[
+  {
+    width: 390,
+    lang: 'es',
+    background: { html: 'rgb(11, 11, 13)', body: 'rgb(11, 11, 13)' },
+    errors: [],
+    lazyScenes: 'visited',
+    reducedMotion: 'toggled',
+    physicalDevice: false
+  },
+  {
+    width: 390,
+    lang: 'en',
+    background: { html: 'rgb(11, 11, 13)', body: 'rgb(11, 11, 13)' },
+    errors: [],
+    lazyScenes: 'visited',
+    reducedMotion: 'toggled',
+    physicalDevice: false
+  },
+  {
+    width: 1440,
+    lang: 'es',
+    background: { html: 'rgb(11, 11, 13)', body: 'rgb(11, 11, 13)' },
+    errors: [],
+    lazyScenes: 'visited',
+    reducedMotion: 'toggled',
+    physicalDevice: false
+  },
+  {
+    width: 1440,
+    lang: 'en',
+    background: { html: 'rgb(11, 11, 13)', body: 'rgb(11, 11, 13)' },
+    errors: [],
+    lazyScenes: 'visited',
+    reducedMotion: 'toggled',
+    physicalDevice: false
+  }
+]
+
+## Final SVG rule regression: qa-final-tour.mjs exit 0

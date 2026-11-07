@@ -24,6 +24,17 @@ function mount(){
   const interactive=desktop && !(navigator.hardwareConcurrency<=4);
   const disposers=[];
   const on=(target,event,listener,options)=>{target.addEventListener(event,listener,options);disposers.push(()=>target.removeEventListener(event,listener,options))};
+  // Prepare below-the-fold scenes shortly before they enter view, not all at startup.
+  function near(target,setup){
+   const element=typeof target==='string'?document.querySelector(target):target;
+   let alive=true,child;
+   const observer=new IntersectionObserver(entries=>{
+    if(!alive||child||!entries.some(entry=>entry.isIntersecting))return;
+    observer.disconnect();child=gsap.context(setup);
+   },{rootMargin:'700px 0px'});
+   observer.observe(element);
+   disposers.push(()=>{alive=false;observer.disconnect();child?.revert()});
+  }
   let lenis,tick;
   if(interactive){
    lenis=new Lenis({smoothWheel:true,syncTouch:false,anchors:false,lerp:.38});
@@ -52,9 +63,10 @@ function mount(){
    .from('.hero-bottom',{y:14,opacity:.5,duration:.65,clearProps:'transform,opacity'},.45);
   gsap.to('.orb',{yPercent:desktop?24:10,scale:.76,rotation:28,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.5}});
   gsap.to('.hero h1',{xPercent:-2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-  gsap.from('.manifesto-copy',{y:desktop?35:12,duration:.8,clearProps:'transform',scrollTrigger:{trigger:'.manifesto',start:'top 85%',once:true}});
-  gsap.from('.decision h2',{xPercent:3,ease:'none',scrollTrigger:{trigger:'.decision',start:'top 90%',end:'center center',scrub:true}});
+  near('.manifesto',()=>{gsap.from('.manifesto-copy',{y:desktop?35:12,duration:.8,clearProps:'transform',scrollTrigger:{trigger:'.manifesto',start:'top 85%',once:true}});});
+  near('.decision',()=>{gsap.from('.decision h2',{xPercent:3,ease:'none',scrollTrigger:{trigger:'.decision',start:'top 90%',end:'center center',scrub:true}});});
 
+  near('.transformation',()=>{
   const transform=gsap.timeline({scrollTrigger:{trigger:'.transformation',start:desktop?'top 65%':'top 75%',end:desktop?'bottom 45%':'bottom 75%',scrub:.35}});
   transform.from('.idea-orbit',{scale:.3,rotation:-90},0)
    .from('.build-frame',{scale:.35,rotation:-12,opacity:0},.15)
@@ -64,8 +76,9 @@ function mount(){
    .from('.build-layout>*',{y:30,opacity:0,stagger:.1},.55)
    .from('.build-tiles i',{scaleY:0,transformOrigin:'bottom',stagger:.1},.8);
   transform.from('.transform-stages li',{x:10,stagger:.12,duration:.28},0);
+  });
 
-  document.querySelectorAll('.service').forEach((service,index)=>{
+  document.querySelectorAll('.service').forEach((service,index)=>near(service,()=>{
    const art=service.querySelector('.demo-stage');
    const pieces=art.querySelectorAll(index===0?'.demo-landing>* , .demo-foot i':index===1?'.map-page':'.social-piece');
    const reveal=gsap.timeline({paused:true,defaults:{ease:'power3.out'}});
@@ -79,10 +92,12 @@ function mount(){
     on(service,'pointermove',e=>{const r=service.getBoundingClientRect();x(((e.clientX-r.left)/r.width-.5)*7);y(-((e.clientY-r.top)/r.height-.5)*5)},{passive:true});
     on(service,'pointerleave',()=>{x(0);y(0)});
    }
-  });
-  gsap.from('.project-bridge h2',{y:24,scale:.97,duration:.85,clearProps:'transform',scrollTrigger:{trigger:'.project-bridge',start:'top 80%',once:true}});
+  }));
+  near('.project-bridge',()=>{gsap.from('.project-bridge h2',{y:24,scale:.97,duration:.85,clearProps:'transform',scrollTrigger:{trigger:'.project-bridge',start:'top 80%',once:true}});});
+  near('.closing',()=>{
   gsap.from('.closing h2',{y:desktop?40:15,duration:.9,ease:'power3.out',clearProps:'transform',scrollTrigger:{trigger:'.closing',start:'top 80%',once:true}});
   gsap.fromTo('.closing-orb',{yPercent:15,rotation:-15},{yPercent:-10,rotation:20,ease:'none',scrollTrigger:{trigger:'.closing',start:'top bottom',end:'bottom top',scrub:.5}});
+  });
   if(interactive){
    const rings=document.querySelector('.orb i');
    const x=gsap.quickTo(rings,'x',{duration:.8,ease:'power3.out'});

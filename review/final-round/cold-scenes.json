@@ -1,0 +1,50 @@
+[
+  {
+    "width": 390,
+    "lang": "es",
+    "background": {
+      "html": "rgb(11, 11, 13)",
+      "body": "rgb(11, 11, 13)"
+    },
+    "errors": [],
+    "lazyScenes": "visited",
+    "reducedMotion": "toggled",
+    "physicalDevice": false
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "background": {
+      "html": "rgb(11, 11, 13)",
+      "body": "rgb(11, 11, 13)"
+    },
+    "errors": [],
+    "lazyScenes": "visited",
+    "reducedMotion": "toggled",
+    "physicalDevice": false
+  },
+  {
+    "width": 1440,
+    "lang": "es",
+    "background": {
+      "html": "rgb(11, 11, 13)",
+      "body": "rgb(11, 11, 13)"
+    },
+    "errors": [],
+    "lazyScenes": "visited",
+    "reducedMotion": "toggled",
+    "physicalDevice": false
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "background": {
+      "html": "rgb(11, 11, 13)",
+      "body": "rgb(11, 11, 13)"
+    },
+    "errors": [],
+    "lazyScenes": "visited",
+    "reducedMotion": "toggled",
+    "physicalDevice": false
+  }
+]

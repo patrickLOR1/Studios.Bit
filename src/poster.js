@@ -11,7 +11,10 @@ export function mountBand(){
   const pause=stopped || reduce.matches || !visible || document.hidden || hovered || band.contains(document.activeElement);
   tween?.paused(pause);
  }
+ band.classList.toggle('band-ready',!reduce.matches);
  function rebuild(){
+  band.classList.toggle('band-ready',!reduce.matches);
+  if(!visible&&!tween&&!reduce.matches)return;
   tween?.kill();
   track.querySelector('.band-clone')?.remove();
   gsap.set(track,{x:0});
@@ -25,7 +28,7 @@ export function mountBand(){
   tween=gsap.to(track,{x:-distance,duration:distance/(innerWidth<600?36:50),repeat:-1,ease:'none',paused:true});
   sync();
  }
- const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync()});
+ const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible&&!tween)rebuild();sync()});
  observer.observe(band);
  const resize=new ResizeObserver(rebuild);
  resize.observe(band);
