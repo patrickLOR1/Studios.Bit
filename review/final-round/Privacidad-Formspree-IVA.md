@@ -1,4 +1,7 @@
 # Privacidad, recepción e IVA — pendientes para aprobación
+
+> **Actualización 7-nov-2026 — prevalece sobre las notas anteriores:** usuario confirmó que Formspree ya está configurado para entregar notificaciones en un buzón propio; todavía no se ha comprobado aquí el envío real de extremo a extremo. Se redactó el [aviso bilingüe para aprobación](../legal/Aviso-Privacidad-ES-EN-borrador.md); faltan responsable legal, domicilio, canal ARCO, conservación y validación del texto, por lo que `LEADS_ENABLED` permanece desactivado. Se autorizó **añadir el IVA** al cotizador como cálculo general provisional del **16%**, preservando los precios base, presentando subtotal, IVA y total estimado tanto para pago único como para mensualidad, y agregando estos importes al resumen y a los campos de Formspree. El régimen fiscal definitivo todavía debe confirmarse con el responsable fiscal. Las instrucciones antiguas de «IVA por determinar» describen el estado previo a esta actualización. No desplegar estos cambios a producción automáticamente.
+
 Fecha: 2026-11-07. No se ha activado captación ni indexación.
 
 ## Datos que debe confirmar Studios.Bit
