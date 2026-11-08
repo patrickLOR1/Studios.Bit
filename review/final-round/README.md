@@ -1,6 +1,6 @@
 # Studios.Bit — cierre de ajustes para aprobación
 Fecha: 7 de noviembre de 2026. Rama: `release/launch-preview`.
-Producción, main, indexación y captación real permanecen fuera de esta entrega.
+No se ejecutaron operaciones de promoción ni merge a main. Indexación y captación real siguen desactivadas. Durante la comprobación final apareció un redespliegue externo a las acciones de esta ronda; el usuario autorizó conservarlo. Ver Verificacion-despliegue.md.
 
 ## Cambios realizados
 - Inicio más ligero: escenas GSAP preparadas cerca del viewport; banda tipográfica inicializada al entrar en pantalla. Se conservan esfera, halo del cursor, navegación flotante, storytelling, interacciones y reduced-motion.
@@ -54,5 +54,5 @@ La regla `.concept svg` destinada a ilustraciones también ampliaba la flecha de
 - [Carga en frío y escenas](cold-scenes.json) · [Muestreo de carga](filmstrip-analysis.json)
 
 ## Preview de revisión
-[Español](https://studiosbit-dist-git-release-launch-0acbc0-patricklor1s-projects.vercel.app/es/) · [English](https://studiosbit-dist-git-release-launch-0acbc0-patricklor1s-projects.vercel.app/en/)
-Alias de la rama de revisión, protegido por autenticación Vercel. El identificador del commit y la URL inmutable del despliegue final se entregan con la verificación. No es el dominio de producción.
+[Español](https://studiosbit-dist-e86dhc1cp-patricklor1s-projects.vercel.app/es/) · [English](https://studiosbit-dist-e86dhc1cp-patricklor1s-projects.vercel.app/en/)
+URL inmutable del Preview del código 3134f0e, protegido por autenticación Vercel. El cierre documental posterior no cambia los archivos del sitio. Ver [verificación del despliegue](Verificacion-despliegue.md).
