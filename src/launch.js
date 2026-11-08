@@ -62,7 +62,7 @@ if(config.leadEnabled && config.privacyUrl && config.privacyVersion && window.is
   const payload={name:data.name.trim(),email:data.email.trim(),company:data.company.trim(),service:data.service,description:data.details,language:language(),consent:true,privacy_version:config.privacyVersion,privacy_url:config.privacyUrl};
   if(quote){
    const q=estimate(quote);
-   Object.assign(payload,{project_summary:details.dataset.lastQuote,goal:quote.goal,web:quote.web,social_plan:quote.plan,scope:JSON.stringify(quote),estimated_once_mxn:q.once,estimated_monthly_mxn:q.monthly});
+   Object.assign(payload,{project_summary:details.dataset.lastQuote,goal:quote.goal,web:quote.web,social_plan:quote.plan,scope:JSON.stringify(quote),estimated_once_mxn:q.once,estimated_monthly_mxn:q.monthly,vat_rate:q.vatRate,estimated_vat_once_mxn:q.vatOnce,estimated_vat_monthly_mxn:q.vatMonthly,estimated_total_once_mxn:q.totalOnce,estimated_total_monthly_mxn:q.totalMonthly});
   }
   pending=true;result='waiting';render();
   try{
