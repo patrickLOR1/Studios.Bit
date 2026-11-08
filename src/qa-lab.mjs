@@ -9,6 +9,11 @@ for(const [web,plan,units,once,monthly] of [
  const quote=estimate({web,plan,units,bilingual:true,copy:true,motion:true});
  assert.equal(quote.once,once);
  assert.equal(quote.monthly,monthly);
+ assert.equal(quote.vatRate,0.16);
+ assert.equal(quote.vatOnce,Math.round(once*16)/100);
+ assert.equal(quote.vatMonthly,Math.round(monthly*16)/100);
+ assert.equal(quote.totalOnce,Math.round((once+quote.vatOnce)*100)/100);
+ assert.equal(quote.totalMonthly,Math.round((monthly+quote.vatMonthly)*100)/100);
 }
 const browser=await chromium.launch({executablePath:process.env.EDGE_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
 try{
