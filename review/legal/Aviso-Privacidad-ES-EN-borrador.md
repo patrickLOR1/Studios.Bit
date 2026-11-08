@@ -86,7 +86,7 @@ La información legal pendiente no debe completarse con suposiciones. Antes de p
 2. Confirmar correo de privacidad/ARCO, persona responsable del canal y procedimiento de atención.
 3. Aprobar conservación, borrado, accesos internos, transferencias y condiciones del proveedor Formspree.
 4. Asignar versión definitiva y página HTTPS bilingüe; revisar el texto con asesoría jurídica.
-5. Confirmar operación de Formspree: el usuario reporta como receptor **polearyrosas@gmail.com**; verificar con un envío real autorizado en panel y buzón sin divulgar datos de prospectos.
+5. Confirmar operación de Formspree: el usuario ya confirmó un buzón receptor en la conversación privada; verificar con un envío real autorizado en panel y buzón. No publicar el correo personal de recepción en el repositorio.
 6. Mantener una casilla sin marcar por defecto, el enlace al aviso visible y la captación deshabilitada hasta completar los pasos anteriores.
 
 **Fundamento consultado:** Ley Federal de Protección de Datos Personales en Posesión de los Particulares (reforma DOF 14-11-2025), artículos 14–16, https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf
