@@ -41,6 +41,9 @@ try {
   }
   assert.equal(body.language,lang);assert.ok(body.project_summary);assert.equal(typeof body.estimated_once_mxn,'number');
   assert.equal(body.company,'QA');assert.ok(body.scope);assert.equal(body.consent,true);assert.ok(body.goal);assert.equal(typeof body.estimated_monthly_mxn,'number');
+  assert.equal(body.vat_rate,0.16);
+  assert.equal(body.estimated_total_once_mxn,Math.round((body.estimated_once_mxn+body.estimated_vat_once_mxn)*100)/100);
+  assert.equal(body.estimated_total_monthly_mxn,Math.round((body.estimated_monthly_mxn+body.estimated_vat_monthly_mxn)*100)/100);
   await page.close();
  }
  console.log('ES/EN: consent, validation, quote payload, duplicate lock, 422, network failure, success passed (intercepted endpoint).');
