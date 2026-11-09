@@ -26,10 +26,12 @@ try{
       const slider=page.locator('#compare-range');
       await slider.fill('0');
       assert.equal(await slider.getAttribute('aria-valuetext'),lang==='es'?'0% mejorada':'0% improved');
-      assert.match(await page.locator('.ui-after').evaluate(el=>getComputedStyle(el).clipPath),/100%/);
+      assert.equal(await page.locator('.compare-demo').getAttribute('data-compare-state'),'before');
+      assert.ok(await page.locator('.ui-before').evaluate(el=>Number(getComputedStyle(el).opacity))>await page.locator('.ui-after').evaluate(el=>Number(getComputedStyle(el).opacity)));
       await slider.fill('100');
       assert.equal(await slider.getAttribute('aria-valuetext'),lang==='es'?'100% mejorada':'100% improved');
-      assert.match(await page.locator('.ui-after').evaluate(el=>getComputedStyle(el).clipPath),/0%/);
+      assert.equal(await page.locator('.compare-demo').getAttribute('data-compare-state'),'after');
+      assert.ok(await page.locator('.ui-after').evaluate(el=>Number(getComputedStyle(el).opacity))>await page.locator('.ui-before').evaluate(el=>Number(getComputedStyle(el).opacity)));
       assert.deepEqual(errors,[]);
       await page.close();
       console.log(`${width} px · ${lang.toUpperCase()} trust flow OK`);

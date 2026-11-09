@@ -13,6 +13,23 @@
 .process-journey{position:relative}.process-journey:before{content:"";position:absolute;left:21px;top:50px;bottom:50px;width:1px;background:linear-gradient(#ff6a00,#343438)}.process-journey article{position:relative}.process-journey .step-no{background:#0b0b0d;position:relative;z-index:1}
 @media(max-width:1000px){.portfolio-head,.team-intro{grid-template-columns:1fr 1fr}.portfolio-head .section-label{grid-column:1/-1}.portfolio-head>p{grid-column:2}.case,.case:nth-child(even){grid-template-columns:1fr}.case:nth-child(even) .case-preview{order:initial}.case-story{max-width:700px}.comparison{grid-template-columns:1fr}.comparison-copy{max-width:700px}.team{grid-template-columns:1fr}.team-intro{max-width:760px}.team-intro .section-label{margin-bottom:42px}.team-vision{grid-template-columns:1fr 1.4fr}.team-vision p{grid-column:2}.expectations{grid-template-columns:1fr}.expectations-intro{position:static;max-width:800px}.expectations-cta{grid-column:1}}
 @media(max-width:620px){.portfolio,.comparison,.team,.expectations{padding-inline:20px}.portfolio-head{display:block}.portfolio-head .section-label{margin-bottom:42px}.portfolio-head>p{margin-top:28px}.case-meta{align-items:flex-start;gap:16px}.case-meta strong{font-size:9px}.case-preview{min-height:420px}.case-coffee .case-preview{min-height:460px}.coffee-pack{width:50%;left:5%}.coffee-copy{right:4%;width:38%}.social-phone{border-radius:18px}.social-grid{grid-template-columns:repeat(2,1fr);overflow:hidden}.social-grid b:nth-of-type(n+3),.social-grid span:nth-of-type(n+3){display:none}.comparison-copy ul{grid-template-columns:1fr}.compare-stage{height:440px}.ui{padding:22px}.ui nav span{display:none}.team-portraits{grid-template-columns:1fr;gap:44px}.portrait-emiliano{transform:none}.portrait figcaption b{font-size:20px;overflow-wrap:normal}.portrait>div{aspect-ratio:4/5}.team-vision{grid-template-columns:1fr;gap:18px}.team-vision p{grid-column:1}.expectations-list li{grid-template-columns:42px 1fr;gap:12px}.expectations-list li p{grid-column:2}.expectations-list li:hover{padding-left:0}.expectations-intro h2{font-size:42px}}
+
+.compare-stage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;height:auto;min-height:clamp(420px,42vw,620px);overflow:visible;background:transparent;box-shadow:none}
+.compare-stage .ui{position:relative;inset:auto;min-width:0;padding:clamp(58px,4vw,70px) clamp(20px,2.6vw,42px) clamp(20px,2.6vw,42px);overflow:hidden;box-shadow:0 22px 70px #1112;transition:opacity .24s ease,transform .24s ease,box-shadow .24s ease}
+.compare-stage .ui h3{font-size:clamp(30px,3.2vw,56px);overflow-wrap:anywhere}
+.compare-stage .ui-before{opacity:calc(.72 + (1 - var(--progress)) * .28);transform:scale(calc(.985 + (1 - var(--progress)) * .015))}
+.compare-stage .ui-after{z-index:auto;clip-path:none;opacity:calc(.72 + var(--progress) * .28);transform:scale(calc(.985 + var(--progress) * .015))}
+.compare-demo[data-compare-state=before] .ui-before,.compare-demo[data-compare-state=after] .ui-after{box-shadow:0 26px 80px #1114}
+.compare-tag{top:12px}.before-tag{left:12px;right:auto}.after-tag{left:calc(50% + 18px)}
+.compare-line{display:none}
+@media(max-width:720px){.compare-stage{grid-template-columns:1fr;min-height:0}.compare-stage .ui{min-height:390px}.after-tag{left:12px;top:calc(50% + 18px)}}
+@media(prefers-reduced-motion:reduce){.compare-stage .ui{transition:none}}
+.case-open{margin-top:28px;min-height:46px;padding:0 18px;border:1px solid currentColor;background:transparent;color:inherit;font:750 11px Manrope;letter-spacing:.08em;cursor:pointer}
+.case-open:focus-visible{outline:3px solid #ff6a00;outline-offset:4px}
+.case-expanded{margin-top:20px;padding:22px;border-left:3px solid #ff6a00;background:#ffffff0d}
+.case-expanded[hidden]{display:none}.case-expanded p{display:grid;grid-template-columns:minmax(110px,.35fr) 1fr;gap:20px;margin:0;padding:14px 0;border-bottom:1px solid currentColor}
+.case-expanded p:last-child{border-bottom:0}.case-expanded b{font:700 10px DM Mono;letter-spacing:.08em}
+@media(max-width:620px){.case-expanded p{grid-template-columns:1fr;gap:8px}}
 @media(prefers-reduced-motion:reduce){.compare-line:after{content:""}.case-preview{scroll-behavior:auto}}
 
 /* Each concept keeps a distinct material language while sharing one editorial rhythm. */
