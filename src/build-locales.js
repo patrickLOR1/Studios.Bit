@@ -22,7 +22,7 @@ await mkdir('dist',{recursive:true});
 await writeFile('dist/launch-config.js','window.studiosLaunch='+JSON.stringify({leadEnabled,privacyUrl,privacyVersion,origin})+';');
 await writeFile('dist/launch.js',(await transform(await readFile('src/launch.js','utf8'),{loader:'js',minify:true})).code);
 await cp('src/assets','dist/assets',{recursive:true});
-for(const file of ['scroll.js','script.js','styles.css','refinements.css','i18n.js','experience.js','pricing.js','project.css','immersive.css','navigation.css','prototype.js']) await writeFile('dist/'+file,(await transform(await readFile('src/'+file,'utf8'),{loader:file.endsWith('.css')?'css':'js',minify:true})).code);
+for(const file of ['scroll.js','script.js','styles.css','refinements.css','i18n.js','experience.js','pricing.js','project.css','immersive.css','navigation.css','prototype.js','showcase.css','showcase.js']) await writeFile('dist/'+file,(await transform(await readFile('src/'+file,'utf8'),{loader:file.endsWith('.css')?'css':'js',minify:true})).code);
 const script=await readFile('src/i18n.js','utf8');
 await writeFile('dist/sitemap.xml','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+['es','en'].map(lang=>'<url><loc>'+origin+'/'+lang+'/</loc></url>').join('')+'</urlset>');
 await writeFile('dist/robots.txt',indexable?'User-agent: *\nAllow: /\nSitemap: '+origin+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
