@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const chapters=[...document.querySelectorAll('.story-chapters a')];
 function translateChapters(){
  const en=document.documentElement.lang==='en';
- const names=en?['Find the opportunity','Explore solutions','Build my project']:['Encontrar la oportunidad','Explorar soluciones','Construir mi proyecto'];
+ const names=en?['Find the opportunity','Explore solutions','Get a project estimate']:['Encontrar la oportunidad','Explorar soluciones','Cotizar mi proyecto'];
  chapters.forEach((link,i)=>link.querySelector('span').textContent=names[i]);
  document.querySelector('.story-chapters').setAttribute('aria-label',en?'Project journey':'Recorrido del proyecto');
 }

@@ -10,6 +10,12 @@
 .hero h1 .intro-line{display:block;overflow:clip;padding-block:.045em;margin-block:-.045em;color:inherit}
 .hero h1 .intro-phrase{display:block;font-weight:inherit}
 .hero-bottom{position:relative}
+.hero-slogan{margin:0 0 10px!important;color:#f5f5f5!important;font-weight:750;font-size:clamp(16px,1.4vw,20px)!important}
+.hero-description{margin-top:0}
+.hero-services{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 24px;padding:0;list-style:none}
+.hero-services li{padding:7px 10px;border:1px solid #ffffff38;border-radius:99px;color:#f5f5f5;font:650 10px/1.2 Manrope;letter-spacing:.05em;text-transform:uppercase;background:#0b0b0d99;backdrop-filter:blur(6px)}
+.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:18px}
+.hero-services-link{min-height:44px;display:inline-flex;align-items:center;border-bottom:1px solid #f5f5f5;font:750 11px Manrope;letter-spacing:.08em}
 .hero-index{color:#9ca3af}
 .cursor-glow{display:none}
 @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){

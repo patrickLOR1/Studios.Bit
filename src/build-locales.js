@@ -45,7 +45,7 @@ for(const lang of ['es','en']) {
  chapters.className='story-chapters';
  chapters.setAttribute('aria-label',lang==='es'?'Recorrido del proyecto':'Project journey');
  chapters.innerHTML=['decision-title','servicios','proyecto'].map((id,i)=>{
-  const names=lang==='es'?['Encontrar la oportunidad','Explorar soluciones','Construir mi proyecto']:['Find the opportunity','Explore solutions','Build my project'];
+  const names=lang==='es'?['Encontrar la oportunidad','Explorar soluciones','Cotizar mi proyecto']:['Find the opportunity','Explore solutions','Get a project estimate'];
   return '<a href="#'+id+'"><small>0'+(i+1)+'</small><span>'+names[i]+'</span></a>';
  }).join('');
  document.querySelector('.hero').after(chapters);

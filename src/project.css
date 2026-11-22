@@ -9,6 +9,7 @@
 @media(max-width:800px){.lab-grid[data-stage="0"] [data-panel="0"]{display:block}.lab-steps button{min-height:48px}.lab-grid .choice-deck button{min-height:50px}.final-brief{padding:16px}.scope-art{margin-bottom:12px}}
 .story-chapters{position:sticky;top:0;z-index:7;display:flex;justify-content:space-between;gap:12px;padding:10px 5vw;background:#0b0b0d;color:#f5f5f5;border-bottom:1px solid #343436}.story-chapters a{display:inline-flex;align-items:center;gap:12px;min-height:44px;font:600 clamp(12px,1.3vw,17px) Manrope}.story-chapters small{font-family:monospace;color:#a5a5a8}.story-chapters [aria-current] small{background:#ff6a00;color:#0b0b0d;padding:3px 5px}.lab-steps{scroll-margin-top:78px}.lab-grid aside{top:80px}
 @media(max-width:800px){.story-chapters{position:static;align-items:stretch}.story-chapters a{align-items:flex-start;justify-content:center;flex-direction:column;gap:4px;font-size:12px}.lab-steps{scroll-margin-top:12px}}
+.estimate-explainer{max-width:72ch;margin-top:20px;padding:14px 16px;border-left:3px solid #ff6a00;background:#ebeae6;color:#333;font-weight:650}
 
 /* Clear, mobile-friendly estimate: original subtotals, 16% IVA and tax-inclusive totals. */
 .lab-grid .tax-breakdown{margin:20px 0 24px}
