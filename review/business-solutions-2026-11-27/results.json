@@ -1,0 +1,68 @@
+[
+  {
+    "width": 320,
+    "lang": "es",
+    "motion": "reduced",
+    "status": "PASS"
+  },
+  {
+    "width": 320,
+    "lang": "en",
+    "motion": "reduced",
+    "status": "PASS"
+  },
+  {
+    "width": 375,
+    "lang": "es",
+    "motion": "reduced",
+    "status": "PASS"
+  },
+  {
+    "width": 375,
+    "lang": "en",
+    "motion": "reduced",
+    "status": "PASS"
+  },
+  {
+    "width": 768,
+    "lang": "es",
+    "motion": "reduced",
+    "status": "PASS"
+  },
+  {
+    "width": 768,
+    "lang": "en",
+    "motion": "reduced",
+    "status": "PASS"
+  },
+  {
+    "width": 1024,
+    "lang": "es",
+    "motion": "normal",
+    "status": "PASS"
+  },
+  {
+    "width": 1024,
+    "lang": "en",
+    "motion": "normal",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "lang": "es",
+    "motion": "reduced",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "motion": "reduced",
+    "status": "PASS"
+  },
+  {
+    "branches": "all",
+    "mockedSubmission": "PASS",
+    "keyboard": "skip link PASS",
+    "industryRoutes": "PASS"
+  }
+]

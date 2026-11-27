@@ -1,4 +1,5 @@
 import {estimate,booking} from './pricing.js';
+import {isTailored} from './project-intake.js';
 
 const config=window.studiosLaunch;
 const form=document.querySelector('#project-form');
@@ -60,7 +61,9 @@ if(config.leadEnabled && config.privacyUrl && config.privacyVersion && window.is
   const details=form.elements.details;
   const quote=details.dataset.quoteState?JSON.parse(details.dataset.quoteState):null;
   const payload={name:data.name.trim(),email:data.email.trim(),company:data.company.trim(),service:data.service,description:data.details,language:language(),consent:true,privacy_version:config.privacyVersion,privacy_url:config.privacyUrl};
-  if(quote){
+  if(quote && isTailored(quote)){
+   Object.assign(payload,{project_summary:details.dataset.lastQuote,solution:quote.need,scope:JSON.stringify(quote),pricing_status:'requires_tailored_proposal'});
+  }else if(quote){
    const q=estimate(quote);
    Object.assign(payload,{project_summary:details.dataset.lastQuote,goal:quote.goal,web:quote.web,social_plan:quote.plan,scope:JSON.stringify(quote),estimated_once_mxn:q.once,estimated_monthly_mxn:q.monthly,vat_rate:q.vatRate,estimated_vat_once_mxn:q.vatOnce,estimated_vat_monthly_mxn:q.vatMonthly,estimated_total_once_mxn:q.totalOnce,estimated_total_monthly_mxn:q.totalMonthly});
   }
