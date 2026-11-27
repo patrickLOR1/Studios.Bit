@@ -1,6 +1,6 @@
 import {renderPrototype} from './prototype.js';
 import {booking,prices,estimate} from './pricing.js';
-const initial={goal:'leads',presence:'none',web:'landing',plan:'none',units:0,bilingual:false,copy:false,motion:false,custom:false};
+const initial={goal:'leads',presence:'none',web:'landing',plan:'none',units:0,bilingual:false,copy:false,motion:false,custom:false,sector:'general'};
 const state={...initial};
 const content=(lang,s)=> {
  const t=(es,en)=>lang==='en'?en:es;
@@ -26,6 +26,7 @@ const content=(lang,s)=> {
  [t('¿Cómo agendo y qué preparo?','How do I book and what should I prepare?'),t('Reserva una asesoría web en Setmore. Ten a mano tus objetivos, oferta, materiales disponibles y fecha deseada.','Book a web consultation through Setmore. Bring your goals, offer, available assets and desired timing.')]];
  return {summary,book,html:`<div class="project-inner"><p class="mono eyebrow">STUDIOS.BIT / ${t('COTIZADOR','ESTIMATOR')}</p><h2>${t('Cotiza tu proyecto','Estimate your project')}<em>.</em></h2><p>${t('Elige lo que necesitas y obtén una estimación inicial. Podrás revisar el alcance y llevar el resumen a una asesoría antes de contratar.','Choose what you need and get an initial estimate. You can review the scope and bring the summary to a consultation before hiring us.')}</p><p class="estimate-explainer">${t('Los importes son estimaciones, no una propuesta final. Confirmaremos alcance, tiempos e impuestos contigo.','Amounts are estimates, not a final proposal. We will confirm scope, timing and taxes with you.')}</p>
  <div class="lab-grid"><div><section data-panel="0"><h3>01 / ${t('¿Qué quieres lograr?','What do you want to achieve?')}</h3>
+ ${select('sector',t('Sector de tu empresa','Your business sector'),[['general',t('Otros sectores','Other sectors')],['industrial',t('Industria · CNC, metalmecánica o servicios técnicos','Industry · CNC, metalworking or technical services')]])}
  ${select('goal',t('Quiero','I want to'),[['leads',t('Conseguir más consultas de clientes','Get more customer enquiries')],['catalog',t('Explicar claramente mis servicios','Clearly explain my services')],['community',t('Mantener activas mis redes sociales','Keep my social media active')]])}
  ${select('presence',t('¿Ya tienes presencia digital?','Do you already have a digital presence?'),[['none',t('No, empiezo desde cero','No, I am starting from scratch')],['existing',t('Sí, ya tengo sitio o redes','Yes, I already have a website or social media')]])}
  <div class="concept"><small>${t('RECOMENDACIÓN INICIAL','INITIAL RECOMMENDATION')}</small><h4>${services[recommendation]}</h4><b>${t('Tu oferta','Your offer')} → ${t('Contexto','Context')} → ${t('Conversación','Conversation')}</b><p>${reason} ${s.presence==='existing'?t('Partiríamos de una revisión de tus canales actuales.','We would first review your existing channels.'):t('Empezaríamos definiendo tu oferta y audiencia.','We would start by defining your offer and audience.')}</p><button type="button" data-action="apply">${t('Usar esta recomendación','Use this recommendation')} <svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></button></div>
@@ -56,6 +57,7 @@ if(typeof document!=='undefined'){
  const sessionKey='studios.project.v2';
  try{
   const draft=JSON.parse(sessionStorage.getItem(sessionKey)||'{}');
+  if(['general','industrial'].includes(draft.sector))state.sector=draft.sector;
   for(const [key,allowed] of Object.entries({web:['none','landing','corporate'],plan:['none','essential','growth','integral'],goal:['leads','catalog','community'],presence:['none','existing']}))if(allowed.includes(draft[key]))state[key]=draft[key];
   for(const key of ['copy','motion','custom','bilingual'])state[key]=draft[key]===true;
   state.units=Math.min(50,Math.max(0,Math.floor(Number(draft.units)||0)));
@@ -65,7 +67,7 @@ if(typeof document!=='undefined'){
  function brief(lang,s){
   const en=lang==='en';
   const goals=en?{leads:'Generate enquiries',catalog:'Explain services',community:'Engage a community'}:{leads:'Generar consultas',catalog:'Explicar servicios',community:'Mantener una comunidad'};
-  return ['Studios.Bit · '+lang.toUpperCase(),goals[s.goal],s.presence==='existing'?(en?'Existing channels':'Canales activos'):(en?'Starting from scratch':'Presencia nueva'),s.web!=='none'&&s.units?(en?'Additional units: ':'Unidades adicionales: ')+s.units:'',content(lang,s).summary].filter(Boolean).join('\n');
+  return ['Studios.Bit · '+lang.toUpperCase(),s.sector==='industrial'?(en?'Sector: industrial':'Sector: industrial'):(en?'Sector: other':'Sector: otro'),goals[s.goal],s.presence==='existing'?(en?'Existing channels':'Canales activos'):(en?'Starting from scratch':'Presencia nueva'),s.web!=='none'&&s.units?(en?'Additional units: ':'Unidades adicionales: ')+s.units:'',content(lang,s).summary].filter(Boolean).join('\n');
  }
  function go(value){
   if(value===2 && step!==2 && (state.web!=='none'||state.plan!=='none')) document.dispatchEvent(new Event('studios:quote-complete'));

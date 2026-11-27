@@ -9,13 +9,13 @@ const copy = {
  '#main-nav a':['Servicios|Portafolio|Proceso|Equipo|Cotizar|Contacto','Services|Portfolio|Process|Team|Get a quote|Contact'],
  '.nav-close':['Cerrar <span aria-hidden="true">×</span>','Close <span aria-hidden="true">×</span>'],
  '.nav-cta':['Cotizar ahora <svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg>','Get a quote <svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg>'],
- '.hero-kicker':['<span class="pulse"></span> CREATIVIDAD · DIGITAL · TECNOLOGÍA','<span class="pulse"></span> CREATIVE · DIGITAL · TECHNOLOGY'],
- '.hero h1':['Sitios web<br><span>y redes sociales</span><br>para hacer crecer<br>tu negocio.','Websites<br><span>and social media</span><br>to help your<br>business grow.'],
+ '.hero-kicker':['<span class="pulse"></span> SOLUCIONES DIGITALES PARA LA INDUSTRIA','<span class="pulse"></span> DIGITAL DESIGN FOR INDUSTRY'],
+ '.hero h1':['Tu experiencia<br><span>industrial.</span><br>Una web<br>a su altura.','Industrial<br><span>expertise.</span><br>A website<br>to match.'],
  '.hero-slogan':['Ideas que conectan. Soluciones que transforman.','Ideas that connect. Solutions that transform.'],
- '.hero-description':['Diseñamos landing pages, sitios web y contenido para redes sociales que explican lo que haces y facilitan que nuevos clientes te contacten.','We design landing pages, websites and social media content that explain what you do and make it easier for new customers to contact you.'],
- '.hero-services li':['Landing pages|Sitios web|Gestión de redes sociales','Landing pages|Websites|Social media management'],
+ '.hero-description':['Diseño web para empresas industriales que quieren generar más oportunidades de negocio. Mostramos tus capacidades técnicas para transmitir confianza y facilitar solicitudes de cotización.','Web design for industrial businesses that want more opportunities. We turn your technical capabilities into a clear, credible website that makes it easier for buyers to request a quote.'],
+ '.hero-services li':['Maquinados CNC|Metalmecánica|Mantenimiento industrial','CNC machining|Metalworking|Industrial maintenance'],
  '.hero-cta':['COTIZAR MI PROYECTO <span><svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span>','GET A PROJECT ESTIMATE <span><svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span>'],
- '.hero-services-link':['VER SERVICIOS','VIEW SERVICES'],
+ '.hero-services-link':['EXPLORAR SOLUCIONES','EXPLORE SOLUTIONS'],
  '.hero-index':['ESTUDIO CREATIVO / 2026<br>MÉXICO · REMOTO','CREATIVE STUDIO / 2026<br>MEXICO · REMOTE'],
  '.manifesto .section-label':['<span>01</span> ¿QUIÉNES SOMOS?','<span>01</span> WHO WE ARE'],
  '.manifesto-copy>p':['Somos una agencia creativa especializada en <em>páginas de captación, sitios web corporativos y gestión estratégica de redes sociales.</em>','We are a creative agency specializing in <em>landing pages, corporate websites and strategic social media management.</em>'],
@@ -83,8 +83,10 @@ function setLanguage(lang) {
  document.querySelectorAll('[data-lang]').forEach(el=>{el.setAttribute('aria-pressed',String(el.dataset.lang===lang));el.setAttribute('aria-label',el.dataset.lang==='es'?'Español':'English');});
  document.querySelectorAll('.languages').forEach(el=>el.setAttribute('aria-label',n?'Language':'Idioma'));
  const open=document.querySelector('.menu-toggle').getAttribute('aria-expanded')==='true'; document.querySelector('.menu-toggle .sr-only').textContent=n?(open?'Close menu':'Open menu'):(open?'Cerrar menú':'Abrir menú');
- document.title=n?'Studios.Bit — Ideas that connect':'Studios.Bit — Ideas que conectan';
- const description=n?'Landing pages, corporate websites and social media management for brands ready to move forward.':'Páginas de captación, sitios web corporativos y gestión de redes sociales para marcas que quieren avanzar.';
+ document.querySelector('.hero-cta').firstChild.textContent=n?'REQUEST A DIGITAL REVIEW ':'SOLICITAR DIAGNÓSTICO ';
+ document.querySelectorAll('[data-industry-link]').forEach(el=>el.href=n?'/en/industry/':'/es/industria/');
+ document.title=n?'Industrial web design in Mexico | Studios.Bit':'Diseño web para empresas industriales en México | Studios.Bit';
+ const description=n?'Websites for CNC shops, manufacturers and industrial service providers. Present your capabilities and make quote requests easier. Based in Mexico.':'Sitios web para talleres CNC, empresas metalmecánicas y proveedores industriales en CDMX y Estado de México. Presenta tus capacidades y facilita cotizaciones.';
  document.querySelector('meta[name=description]').content=description;
  document.querySelector('meta[property="og:description"]').content=description;
  document.querySelector('meta[property="og:title"]').content=document.title;

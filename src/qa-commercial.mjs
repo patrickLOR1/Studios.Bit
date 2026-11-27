@@ -10,7 +10,7 @@ try{
   for(const lang of ['es','en']){
    await page.goto(`${origin}/${lang}/`,{waitUntil:'domcontentloaded'});
    const hero=await page.locator('.hero').innerText();
-   for(const phrase of lang==='es'?['SITIOS WEB','REDES SOCIALES','COTIZAR MI PROYECTO']:['WEBSITES','SOCIAL MEDIA','GET A PROJECT ESTIMATE'])assert.ok(hero.includes(phrase),phrase);
+   for(const phrase of lang==='es'?['INDUSTRIAL','SOLICITAR DIAGNÓSTICO']:['INDUSTRIAL','REQUEST A DIGITAL REVIEW'])assert.ok(hero.toUpperCase().includes(phrase),phrase);
    assert.equal(await page.locator('#main-nav a[href="#proyecto"]').count(),1);
    await page.locator('.hero-cta').click();
    await page.locator('#proyecto').waitFor({state:'visible'});
