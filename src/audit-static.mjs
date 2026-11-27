@@ -30,9 +30,9 @@ for(const lang of ['es','en']){
  const entities=JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
  assert.equal(entities.filter(e=>e['@type']==='Organization').length,1);
  assert.equal(entities.filter(e=>e['@type']==='WebSite').length,1);
- assert.deepEqual(entities.filter(e=>e['@type']==='Service').map(e=>e.name),[...document.querySelectorAll('.service h2')].map(el=>el.textContent));
+ assert.deepEqual(entities.filter(e=>e['@type']==='Service').map(e=>e.name),[...document.querySelectorAll('.solution-card h3')].map(el=>el.textContent));
  const questions=[...document.querySelectorAll('#proyecto details')];
  assert.ok(questions.length>=5 && questions.every(el=>el.querySelector('summary') && el.querySelector('p')?.textContent));
- assert.ok(document.querySelector('#proyecto aside').textContent.includes('MXN'));
+ assert.ok(!document.querySelector('#proyecto aside').textContent.includes('MXN'));
  console.log(lang,document.title,canonical,questions.length+' FAQs',attr('meta[name=robots]','content'));
 }

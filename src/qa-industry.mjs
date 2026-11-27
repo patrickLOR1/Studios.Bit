@@ -21,6 +21,7 @@ try{
   }
   await page.goto(origin+`/${lang}/`);
   await page.locator('.hero-cta').click();
+  await page.locator('[data-pick=need][data-value=website]').click();
   await page.locator('[data-pick=sector][data-value=industrial]').click();
   await page.locator('[data-action=apply]').click();
   await page.locator('[data-panel="1"] [data-step="2"]').click();

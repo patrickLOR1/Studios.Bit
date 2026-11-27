@@ -1,8 +1,10 @@
 import {renderPrototype} from './prototype.js';
 import {booking,prices,estimate} from './pricing.js';
-const initial={goal:'leads',presence:'none',web:'landing',plan:'none',units:0,bilingual:false,copy:false,motion:false,custom:false,sector:'general'};
+import {needs,isTailored,needPicker,renderTailored} from './project-intake.js';
+const initial={goal:'leads',presence:'none',web:'landing',plan:'none',units:0,bilingual:false,copy:false,motion:false,custom:false,sector:'general',need:'unsure',challenge:'',users:'unknown',connection:'unknown',tools:'',priority:''};
 const state={...initial};
 const content=(lang,s)=> {
+ if(isTailored(s))return renderTailored(lang,s,renderBook(lang));
  const t=(es,en)=>lang==='en'?en:es;
  const money=n=>new Intl.NumberFormat(lang==='en'?'en-US':'es-MX',{style:'currency',currency:'MXN',currencyDisplay:'code',minimumFractionDigits:0,maximumFractionDigits:2}).format(n);
  const q=estimate(s);
@@ -19,13 +21,14 @@ const content=(lang,s)=> {
  const notice=t('Tarifas base más IVA estimado al 16%. El total con impuesto aparece desglosado. Estimación sujeta a revisión del alcance y tratamiento fiscal. Dominio, alojamiento web, licencias y gastos externos se cotizan aparte.','Base prices plus estimated 16% VAT. Tax-inclusive totals are itemized. Estimates are subject to scope and tax review. Domain, hosting, licences and external expenses are quoted separately.');
  const summary=[services[s.web]||'',...rows.filter(x=>x[1]).map(x=>x[0]+': '+money(x[1])),t('Subtotal pago único','One-time subtotal')+': '+money(q.once),t('IVA pago único (16%)','One-time VAT (16%)')+': '+money(q.vatOnce),t('Total pago único con IVA','One-time total including VAT')+': '+money(q.totalOnce),t('Subtotal mensual','Monthly subtotal')+': '+money(q.monthly),t('IVA mensual (16%)','Monthly VAT (16%)')+': '+money(q.vatMonthly),t('Total mensual con IVA','Monthly total including VAT')+': '+money(q.totalMonthly),plans[s.plan]||'',s.web!=='none'&&s.custom?t('Funciones especiales pendientes de cotización.','Custom features require a separate quote.'):'',notice].filter(Boolean).join('\n');
  const faqs=[
- [t('¿Qué es Studios.Bit?','What is Studios.Bit?'),t('Una agencia de soluciones digitales, marketing y redes sociales. Trabajamos con negocios que necesitan explicar su oferta y facilitar el contacto.','A digital solutions, marketing and social media agency for businesses that need to explain their offer and make it easy to get in touch.')],
+ [t('¿Qué es Studios.Bit?','What is Studios.Bit?'),t('Desarrollamos software y soluciones digitales para organizar clientes, conectar equipos y simplificar procesos. Los sitios web y el marketing complementan esa oferta.','We build software and digital solutions to organize customers, connect teams and simplify processes. Websites and marketing complement that offer.')],
  [t('¿Cuándo conviene una página de captación o un sitio corporativo?','When should I choose a landing page or a corporate website?'),t('Una página de captación presenta una oferta y guía hacia una acción. Un sitio corporativo distribuye varias líneas de servicio en páginas propias.','A landing page focuses on one offer and action. A corporate site gives each service its own page.')],
  [t('¿Cuánto cuesta una web y cómo se cotiza?','How much does a website cost and how is it estimated?'),t('Precios de referencia con IVA incluido: página de captación desde ','Reference prices including VAT: landing page from ')+money(Math.round(prices.landing*(1+prices.vat)*100)/100)+t(' (base ', ' (base ')+money(prices.landing)+t('); sitio corporativo desde ','), corporate website from ')+money(Math.round(prices.corporate*(1+prices.vat)*100)/100)+t(' (base ',' (base ')+money(prices.corporate)+t('). Los extras y el alcance se calculan en el cotizador.','), with extras and project scope calculated in the estimator.')],
  [t('¿Qué incluye la gestión de redes?','What does social media management include?'),t('Planeación, diseño, redacción, programación y reporte. El número de redes, piezas y reels depende del plan. Producción presencial, anuncios y atención intensiva de mensajes requieren otro alcance.','Planning, design, writing, scheduling and reporting. Channels, content volume and reels depend on the plan. On-site production, advertising and intensive inbox management require a separate scope.')],
  [t('¿Cómo agendo y qué preparo?','How do I book and what should I prepare?'),t('Reserva una asesoría web en Setmore. Ten a mano tus objetivos, oferta, materiales disponibles y fecha deseada.','Book a web consultation through Setmore. Bring your goals, offer, available assets and desired timing.')]];
  return {summary,book,html:`<div class="project-inner"><p class="mono eyebrow">STUDIOS.BIT / ${t('COTIZADOR','ESTIMATOR')}</p><h2>${t('Cotiza tu proyecto','Estimate your project')}<em>.</em></h2><p>${t('Elige lo que necesitas y obtén una estimación inicial. Podrás revisar el alcance y llevar el resumen a una asesoría antes de contratar.','Choose what you need and get an initial estimate. You can review the scope and bring the summary to a consultation before hiring us.')}</p><p class="estimate-explainer">${t('Los importes son estimaciones, no una propuesta final. Confirmaremos alcance, tiempos e impuestos contigo.','Amounts are estimates, not a final proposal. We will confirm scope, timing and taxes with you.')}</p>
  <div class="lab-grid"><div><section data-panel="0"><h3>01 / ${t('¿Qué quieres lograr?','What do you want to achieve?')}</h3>
+ ${needPicker(lang,s)}
  ${select('sector',t('Sector de tu empresa','Your business sector'),[['general',t('Otros sectores','Other sectors')],['industrial',t('Industria · CNC, metalmecánica o servicios técnicos','Industry · CNC, metalworking or technical services')]])}
  ${select('goal',t('Quiero','I want to'),[['leads',t('Conseguir más consultas de clientes','Get more customer enquiries')],['catalog',t('Explicar claramente mis servicios','Clearly explain my services')],['community',t('Mantener activas mis redes sociales','Keep my social media active')]])}
  ${select('presence',t('¿Ya tienes presencia digital?','Do you already have a digital presence?'),[['none',t('No, empiezo desde cero','No, I am starting from scratch')],['existing',t('Sí, ya tengo sitio o redes','Yes, I already have a website or social media')]])}
@@ -57,6 +60,10 @@ if(typeof document!=='undefined'){
  const sessionKey='studios.project.v2';
  try{
   const draft=JSON.parse(sessionStorage.getItem(sessionKey)||'{}');
+  state.need=Object.hasOwn(needs,draft.need)?draft.need:draft.web?'website':'unsure';
+  for(const key of ['challenge','tools','priority'])if(typeof draft[key]==='string')state[key]=draft[key].slice(0,2000);
+  if(['team','customers','both','unknown'].includes(draft.users))state.users=draft.users;
+  if(['yes','no','unknown'].includes(draft.connection))state.connection=draft.connection;
   if(['general','industrial'].includes(draft.sector))state.sector=draft.sector;
   for(const [key,allowed] of Object.entries({web:['none','landing','corporate'],plan:['none','essential','growth','integral'],goal:['leads','catalog','community'],presence:['none','existing']}))if(allowed.includes(draft[key]))state[key]=draft[key];
   for(const key of ['copy','motion','custom','bilingual'])state[key]=draft[key]===true;
@@ -66,6 +73,7 @@ if(typeof document!=='undefined'){
  function save(){try{sessionStorage.setItem(sessionKey,JSON.stringify({...state,step,lang:document.documentElement.lang}));}catch{}}
  function brief(lang,s){
   const en=lang==='en';
+  if(isTailored(s))return 'Studios.Bit · '+lang.toUpperCase()+'\n'+content(lang,s).summary;
   const goals=en?{leads:'Generate enquiries',catalog:'Explain services',community:'Engage a community'}:{leads:'Generar consultas',catalog:'Explicar servicios',community:'Mantener una comunidad'};
   return ['Studios.Bit · '+lang.toUpperCase(),s.sector==='industrial'?(en?'Sector: industrial':'Sector: industrial'):(en?'Sector: other':'Sector: otro'),goals[s.goal],s.presence==='existing'?(en?'Existing channels':'Canales activos'):(en?'Starting from scratch':'Presencia nueva'),s.web!=='none'&&s.units?(en?'Additional units: ':'Unidades adicionales: ')+s.units:'',content(lang,s).summary].filter(Boolean).join('\n');
  }
@@ -76,7 +84,7 @@ if(typeof document!=='undefined'){
  }
  function enhance(){
   const lang=document.documentElement.lang,en=lang==='en';
-  const names=en?['Your goal','Choose services','Review estimate']:['Tu objetivo','Elige servicios','Revisa estimación'];
+  const names=en?['Your needs','Define scope','Review brief']:['Tu necesidad','Define el alcance','Revisa el resumen'];
   const grid=lab.querySelector('.lab-grid');
   grid.insertAdjacentHTML('beforebegin','<nav class="lab-steps" aria-label="'+(en?'Project steps':'Pasos del proyecto')+'">'+names.map((name,i)=>'<button type="button" data-step="'+i+'" '+(step===i?'aria-current="step"':'')+'>0'+(i+1)+' / '+name+'</button>').join('')+'</nav>');
   grid.dataset.stage=step;
@@ -91,6 +99,7 @@ if(typeof document!=='undefined'){
    }
   }
 
+  if(!isTailored(state)){
   lab.querySelector('[data-panel="1"]').insertAdjacentHTML('beforeend','<div class="scope-art">'+renderPrototype(state,lang)+'</div><button type="button" data-step="2">'+(en?'Review my project':'Revisar mi proyecto')+' <svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></button>');
   const caption=document.createElement('p');
   caption.className='scope-caption';
@@ -111,6 +120,7 @@ if(typeof document!=='undefined'){
    caption.textContent=describeScope();
    lab.querySelector('.project-prototype').outerHTML=renderPrototype(state,lang);
   }));
+  }
   if(step===2){
    const preview=document.createElement('pre');preview.className='final-brief';preview.textContent=brief(lang,state);grid.firstElementChild.append(preview);
    lab.querySelector('[data-action=copy]').insertAdjacentHTML('afterend','<button type="button" data-action="download">'+(en?'Download brief':'Descargar resumen')+'</button>');
@@ -119,21 +129,23 @@ if(typeof document!=='undefined'){
   save();
  }
  const refresh=()=>{lab.innerHTML=content(document.documentElement.lang,state).html;
- lab.querySelector('.concept h4').insertAdjacentHTML('afterend','<svg aria-hidden="true" viewBox="0 0 240 84" fill="#f5f5f5"><rect width="240" height="84" fill="#0b0b0d"/>'+drawings[state.goal]+'</svg>');
+ if(!isTailored(state))lab.querySelector('.concept h4').insertAdjacentHTML('afterend','<svg aria-hidden="true" viewBox="0 0 240 84" fill="#f5f5f5"><rect width="240" height="84" fill="#0b0b0d"/>'+drawings[state.goal]+'</svg>');
  enhance();document.dispatchEvent(new CustomEvent('labchange',{detail:estimate(state)}));document.dispatchEvent(new Event('labresize'));};
  lab.addEventListener('input',event=>{
+  if(['challenge','tools','priority'].includes(event.target.dataset.field)){state[event.target.dataset.field]=event.target.value.slice(0,2000);save();return;}
   if(event.target.dataset.field!=='units')return;
   state.units=Math.min(50,Math.max(0,Math.floor(Number(event.target.value)||0)));
   const calculated=document.createElement('template');
   calculated.innerHTML=content(document.documentElement.lang,state).html;
   lab.querySelector('aside').replaceWith(calculated.content.querySelector('aside'));save();document.dispatchEvent(new CustomEvent('labchange',{detail:estimate(state)}));
  });
- lab.addEventListener('change',event=>{const el=event.target,key=el.dataset.field;if(!key)return;state[key]=el.type==='checkbox'?el.checked:key==='units'?Math.min(50,Math.max(0,Math.floor(Number(el.value)||0))):el.value;refresh();(lab.querySelector('[data-pick="'+key+'"][aria-pressed=true]')||lab.querySelector('[data-field="'+key+'"]'))?.focus({preventScroll:true});});
+ lab.addEventListener('change',event=>{const el=event.target,key=el.dataset.field;if(!key||['challenge','tools','priority'].includes(key))return;state[key]=el.type==='checkbox'?el.checked:key==='units'?Math.min(50,Math.max(0,Math.floor(Number(el.value)||0))):el.value;if(key==='need'&&state.need==='marketing'){state.goal='community';state.web='none';state.plan='essential';}if(key==='need'&&state.need==='website'){state.goal='leads';state.web='landing';state.plan='none';}refresh();(lab.querySelector('[data-pick="'+key+'"][aria-pressed=true]')||lab.querySelector('[data-field="'+key+'"]'))?.focus({preventScroll:true});});
+ document.addEventListener('click',event=>{const link=event.target.closest('[data-solution]');if(!link)return;event.preventDefault();state.need=link.dataset.solution;if(!Object.hasOwn(needs,state.need))state.need='unsure';if(state.need==='marketing'){state.goal='community';state.web='none';state.plan='essential';}step=0;refresh();window.studiosScroll.navigate(lab,{focus:lab.querySelector('.lab-steps button')});});
  lab.addEventListener('click',async event=>{
  const next=event.target.closest('button[data-step]');if(next){go(Number(next.dataset.step));return;}
  const action=event.target.closest('button')?.dataset.action;if(!action)return;
  const lang=document.documentElement.lang;
- if(action==='apply'){state.web=state.goal==='community'?'none':state.goal==='catalog'?'corporate':'landing';state.plan=state.goal==='community'?'essential':'none';go(1);return;}
+ if(action==='apply'){if(!isTailored(state)){state.web=state.goal==='community'?'none':state.goal==='catalog'?'corporate':'landing';state.plan=state.goal==='community'?'essential':'none';}go(1);return;}
  const summary=brief(lang,state);
  if(action==='download'){const url=URL.createObjectURL(new Blob([summary],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='StudiosBit-'+lang+'.txt';link.click();document.dispatchEvent(new Event('studios:brief-download'));setTimeout(()=>URL.revokeObjectURL(url),3000);return;}
  if(action==='copy'){try{await navigator.clipboard.writeText(summary);lab.querySelector('#lab-status').textContent=lang==='es'?'Estimación copiada.':'Estimate copied.';}catch{lab.querySelector('#lab-status').textContent=summary;}return;}
@@ -142,7 +154,7 @@ if(typeof document!=='undefined'){
  details.value=[notes,summary].filter(Boolean).join('\n\n');
  details.dataset.lastQuote=summary;
  details.dataset.quoteState=JSON.stringify(state);
- document.querySelector('#service').value=state.web!=='none'?state.web:state.plan!=='none'?'social':'other';details.dispatchEvent(new Event('input',{bubbles:true}));window.studiosScroll.navigate(document.querySelector('#contacto'),{focus:document.querySelector('#name')});
+ document.querySelector('#service').value=isTailored(state)?state.need:state.web!=='none'?state.web:state.plan!=='none'?'social':'other';details.dispatchEvent(new Event('input',{bubbles:true}));window.studiosScroll.navigate(document.querySelector('#contacto'),{focus:document.querySelector('#name')});
  });
  document.addEventListener('languagechange',()=>{
   document.querySelectorAll('[data-book]').forEach(el=>el.innerHTML=renderBook(document.documentElement.lang));
